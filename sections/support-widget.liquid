@@ -1,0 +1,792 @@
+{{ 'support-widget.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'support-widget.js' | asset_url }}" defer></script>
+
+{%- assign widget_position = section.settings.widget_position -%}
+{%- assign primary_color   = section.settings.primary_color -%}
+{%- assign icon_color      = section.settings.icon_color -%}
+{%- assign btn_size        = section.settings.button_size -%}
+{%- assign widget_right_or_left_position = section.settings.widget_right_or_left_position -%}
+{%- assign widget_bottom_position = section.settings.widget_bottom_position -%}
+{%- assign support_widget_icon = section.settings.support_widget_icon -%}
+{%- assign phone_tooltip_text = section.settings.phone_tooltip_text -%}
+{%- assign phone_icon = section.settings.phone_icon -%}
+{%- assign whatsapp_tooltip_text = section.settings.whatsapp_tooltip_text -%}
+{%- assign whatsapp_icon = section.settings.whatsapp_icon -%}
+{%- assign email_tooltip_text = section.settings.email_tooltip_text -%}
+{%- assign email_icon = section.settings.email_icon -%}
+{%- assign tooltip_background_color = section.settings.tooltip_background_color -%}
+{%- assign tooltip_text_color = section.settings.tooltip_text_color -%}
+{%- assign contact_btn_background_color = section.settings.contact_btn_background_color -%}
+{%- assign contact_btn_icon_color = section.settings.contact_btn_icon_color -%}
+{%- assign categories_title = section.settings.categories_title -%}
+{%- assign categories_title_color = section.settings.categories_title_color -%}
+{%- assign categories_card_title_color = section.settings.categories_card_title_color -%}
+{%- assign categories_card_bg_color = section.settings.categories_card_bg_color -%}
+{%- assign featured_questions_title = section.settings.featured_questions_title -%}
+{%- assign featured_questions_title_color = section.settings.featured_questions_title_color -%}
+{%- assign featured_questions_category_color = section.settings.featured_questions_category_color -%}
+{%- assign answer_screen_subtitle_category_color = section.settings.answer_screen_subtitle_category_color -%}
+{%- assign answer_screen_subtitle_category_hover_color = section.settings.answer_screen_subtitle_category_hover_color -%}
+{%- assign answer_screen_answer_card_color = section.settings.answer_screen_answer_card_color -%}
+{%- assign answer_screen_answer_card_bg_color = section.settings.answer_screen_answer_card_bg_color -%}
+{%- assign answer_screen_faq_nav_link_color = section.settings.answer_screen_faq_nav_link_color -%}
+{%- assign empty_category_text = section.settings.empty_category_text -%}
+
+{% style %}
+  #support-widget-{{ section.id }} {
+    --sw-primary:     {{ primary_color }};
+    --sw-icon:        {{ icon_color }};
+    --sw-btn-size:    {{ btn_size }}px;
+  }
+  #support-widget-{{ section.id }} .sw-trigger {
+    {{ widget_position }}: {{ widget_right_or_left_position }}px;
+  }
+  @media (min-width: 451px) {
+    #support-widget-{{ section.id }} .sw-panel-{{ widget_position }} {
+      {{ widget_position }}: {{ widget_right_or_left_position }}px;
+    }
+  }
+  #support-widget-{{ section.id }} .sw-trigger {
+    bottom: {{ widget_bottom_position }}px;
+  }
+  #support-widget-{{ section.id }} .sw-trigger {
+    max-height: calc(100dvh - {{ widget_bottom_position }}px);
+  }
+  #support-widget-{{ section.id }} .sw-tooltip,
+  #support-widget-{{ section.id }} .sw-tooltip::after {
+    background: {{ tooltip_background_color }};
+    color: {{ tooltip_text_color }};
+  }
+  #support-widget-{{ section.id }} .sw-contact-btn {
+    background: {{ contact_btn_background_color }};
+    color: {{ contact_btn_icon_color }};
+  }
+  #support-widget-{{ section.id }} .sw-categories-title {
+    color: {{ categories_title_color }};
+  }
+  #support-widget-{{ section.id }} .sw-category-card {
+    background: {{ categories_card_bg_color }};
+  }
+  #support-widget-{{ section.id }} .sw-category-card__label {
+    color: {{ categories_card_title_color }};
+  }
+  #support-widget-{{ section.id }} .sw-featured-questions-title {
+    color: {{ featured_questions_title_color }};
+  }
+  #support-widget-{{ section.id }} .sw-faq-item__category {
+    color: {{ featured_questions_category_color }};
+  }
+  #support-widget-{{ section.id }} .sw-screen-subtitle {
+    color: {{ answer_screen_subtitle_category_color }};
+  }
+  #support-widget-{{ section.id }} .sw-screen-subtitle:hover {
+    color: {{ answer_screen_subtitle_category_hover_color }};
+  }
+  #support-widget-{{ section.id }} .sw-answer-text {
+    color: {{ answer_screen_answer_card_color }};
+    background: {{ answer_screen_answer_card_bg_color }};
+  }
+  #support-widget-{{ section.id }} .sw-answer-nav__link {
+    color: {{ answer_screen_faq_nav_link_color }};
+  }
+{% endstyle %}
+
+{% capture faq_items %}
+  {
+    {% for block in section.blocks %}
+      {% if block.type == 'faq_item' %}
+        "{{ block.id }}": {
+          "id": {{ block.id | json }},
+          "question": {{ block.settings.question | json }},
+          "answer": {{ block.settings.answer | json }},
+          "categoryLabel": {{ block.settings.category_label | json }},
+          "categoryId": {{ block.settings.category_id | json }},
+          "showOnHome": {{ block.settings.show_on_home | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  }
+{% endcapture %}
+
+{% capture faq_categories %}
+  {
+    {% assign first = true %}
+    {% for block in section.blocks %}
+      {% if block.type == 'faq_category' %}
+        {% unless first %},{% endunless %}
+        {% assign first = false %}
+        "{{ block.settings.category_id }}": {
+          "name": {{ block.settings.category_name | json }},
+          "icon": {{ block.settings.category_icon | json }}
+        }
+      {% endif %}
+    {% endfor %}
+  }
+{% endcapture %}
+
+{% capture arrow_icon_prev %}
+  {% render 'svg-icons', icon_name: 'back-arrow' %}
+{% endcapture %}
+
+{% capture arrow_icon_next %}
+  {% render 'svg-icons', icon_name: 'forward-arrow' %}
+{% endcapture %}
+
+{% if support_widget_icon %}
+  <support-widget
+    class="support-widget"
+    id="support-widget-{{ section.id }}"
+    data-position="{{ widget_position }}"
+    data-phone="{{ phone_tooltip_text | escape }}"
+    data-whatsapp="{{ whatsapp_tooltip_text | escape }}"
+    data-email="{{ email_tooltip_text | escape }}"
+    data-faq-items='{{ faq_items | strip_newlines | escape}}'
+    data-faq-categories='{{ faq_categories | strip_newlines | escape }}'
+    data-arrow-icon-prev='{{ arrow_icon_prev | strip_newlines | escape }}'
+    data-arrow-icon-next='{{ arrow_icon_next | strip_newlines | escape }}'
+    data-empty-category-text='{{ empty_category_text | escape }}'
+  >
+    <button
+      class="sw-trigger"
+      aria-label="{{ section.settings.trigger_label | default: 'Open support' | escape }}"
+      aria-expanded="false"
+      aria-controls="sw-panel"
+      id="sw-trigger"
+    >
+      {{ support_widget_icon }}
+    </button>
+
+    <div class="sw-overlay" aria-hidden="true" id="sw-overlay"> </div>
+
+    <div class="sw-tooltip" id="sw-tooltip" role="tooltip" aria-hidden="true"> </div>
+
+    <div
+      class="sw-panel sw-panel-{{ widget_position }}"
+      id="sw-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sw-panel-title"
+      tabindex="-1"
+    >
+      <div class="sw-header">
+        <div class="sw-header__top">
+          <div class="sw-contact-strip" role="group" aria-label="Contact us">
+
+            {% if section.settings.phone_number != blank %}
+              <a
+                href="tel:{{ section.settings.phone_number }}"
+                class="sw-contact-btn"
+                aria-label="Call us at {{ section.settings.phone_number }}"
+                data-tooltip="{{ phone_tooltip_text | escape }}"
+              >
+                {% if phone_icon %}
+                  {{ phone_icon }}
+                {% else %}
+                  {% render 'svg-icons', icon_name: 'phone' %}
+                {% endif %}
+              </a>
+            {% endif %}
+
+            {% if section.settings.whatsapp_number != blank %}
+              <a
+                href="https://wa.me/{{ section.settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' }}"
+                class="sw-contact-btn"
+                aria-label="Chat on WhatsApp: {{ section.settings.whatsapp_number }}"
+                data-tooltip="{{ whatsapp_tooltip_text | escape }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {% if whatsapp_icon %}
+                  {{ whatsapp_icon }}
+                {% else %}
+                  {% render 'svg-icons', icon_name: 'whatsapp' %}
+                {% endif %}
+              </a>
+            {% endif %}
+
+            {% if section.settings.contact_email != blank %}
+              <a
+                href="mailto:{{ section.settings.contact_email }}"
+                class="sw-contact-btn"
+                aria-label="Email us at {{ section.settings.contact_email }}"
+                data-tooltip="{{ email_tooltip_text | escape }}"
+              >
+                {% if email_icon %}
+                  {{ email_icon }}
+                {% else %}
+                  {% render 'svg-icons', icon_name: 'email' %}
+                {% endif %}
+              </a>
+            {% endif %}
+
+          </div>
+
+          <button
+            class="sw-close-btn"
+            aria-label="Close support panel"
+            id="sw-close-btn"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="sw-wave" aria-hidden="true">
+          <svg viewBox="0 0 400 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,14 C150,36 250,-8 400,14 L400,28 L0,28 Z" fill="#f4f4f4"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="sw-body">
+        <div class="sw-screen sw-screen--active" data-screen="home" id="sw-screen-home">
+          {% if categories_title %}
+            <div class="sw-categories-section">
+              <h2 class="sw-section-title sw-categories-title" id="sw-panel-title">{{ categories_title }}</h2>
+              <div class="sw-category-grid" role="list">
+                {% assign category_blocks = section.blocks | where: "type", "faq_category" %}
+                {% for block in category_blocks %}
+                  {% if block.settings.category_icon and block.settings.category_name %}
+                    <button
+                      class="sw-category-card"
+                      data-action="open-category"
+                      data-category-id="{{ block.settings.category_id }}"
+                      role="listitem"
+                    >
+                      <span class="sw-category-card__icon" aria-hidden="true">
+                        {{ block.settings.category_icon }}
+                      </span>
+                      <span class="sw-category-card__label">{{ block.settings.category_name }}</span>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <div class="sw-categories-section">
+              <h2 class="sw-section-title" id="sw-panel-title">FAQ categories</h2>
+              <div class="sw-category-grid" role="list">
+                {% assign category_blocks = section.blocks | where: "type", "faq_category" %}
+                {% for block in category_blocks %}
+                  {% if block.settings.category_icon and block.settings.category_name %}
+                    <button
+                      class="sw-category-card"
+                      data-action="open-category"
+                      data-category-id="{{ block.settings.category_id }}"
+                      role="listitem"
+                    >
+                      <span class="sw-category-card__icon" aria-hidden="true">
+                        {{- 'icon-question-mark.svg' | inline_asset_content -}}
+                      </span>
+                      <span class="sw-category-card__label">Category name</span>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% assign home_faq_blocks = section.blocks | where: "type", "faq_item" %}
+          {% assign has_home_faqs = false %}
+          {% for block in home_faq_blocks %}
+            {% if block.settings.show_on_home %}
+              {% assign has_home_faqs = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if has_home_faqs and featured_questions_title %}
+            <div class="sw-featured-questions-section">
+              <h2 class="sw-section-title sw-featured-questions-title">{{ featured_questions_title }}</h2>
+              <div class="sw-faq-list" role="list">
+                {% for block in home_faq_blocks %}
+                  {% if block.settings.show_on_home and block.settings.question and block.settings.answer and block.settings.category_label %}
+                    <button
+                      class="sw-faq-item"
+                      data-action="open-answer"
+                      data-faq-id="{{ block.id }}"
+                      data-question="{{ block.settings.question | escape }}"
+                      data-answer="{{ block.settings.answer | escape }}"
+                      data-category-label="{{ block.settings.category_label | escape }}"
+                      data-category-id="{{ block.settings.category_id | escape }}"
+                      role="listitem"
+                    >
+                      {% if block.settings.category_icon %}
+                        <span class="sw-faq-item__icon" aria-hidden="true">
+                          {{ block.settings.category_icon }}
+                        </span>
+                      {% endif %}
+                      <span>
+                        <p class="sw-faq-item__question">{{ block.settings.question }}</p>
+                        <p class="sw-faq-item__category">{{ block.settings.category_label }}</p>
+                      </span>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div class="sw-screen" data-screen="category" id="sw-screen-category" hidden>
+          <div class="sw-back-row">
+            <button class="sw-back-btn" data-action="go-home" aria-label="Back to FAQ categories">
+              {% render 'svg-icons', icon_name: 'back-arrow' %}
+            </button>
+            <h2 class="sw-screen-title" id="sw-category-title" tabindex="-1">Category</h2>
+          </div>
+          <div class="sw-faq-list" id="sw-category-faq-list" role="list"></div>
+        </div>
+
+        <div class="sw-screen" data-screen="answer" id="sw-screen-answer" hidden>
+          <div class="sw-back-row">
+            <button class="sw-back-btn" id="sw-answer-back-btn" aria-label="Back">
+              {% render 'svg-icons', icon_name: 'back-arrow' %}
+            </button>
+            <div>
+              <h2 class="sw-screen-title" id="sw-answer-title" tabindex="-1"></h2>
+              <button
+              class="sw-screen-subtitle sw-answer-category-link"
+              id="sw-answer-category-btn"
+              data-action="go-to-category-from-answer"
+              aria-label="View all questions in this category"
+            >
+              <span id="sw-answer-category-btn-label"></span>
+            </button>
+            </div>
+          </div>
+
+          <div class="sw-answer-card">
+            <div id="sw-answer-text"></div>
+          </div>
+
+          <div class="sw-answer-nav" id="sw-answer-nav"></div>
+        </div>
+
+      </div>
+    </div>
+  </support-widget>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Support Widget",
+  "class": "support-widget-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Widget appearance"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary color",
+      "default": "#C0392B"
+    },
+    {
+      "type": "html",
+      "id": "support_widget_icon",
+      "label": "Icon SVG",
+      "info": "Paste an inline SVG (32×32 recommended).",
+      "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon / text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "widget_position",
+      "label": "Widget position",
+      "options": [
+        { "value": "right", "label": "Bottom right" },
+        { "value": "left",  "label": "Bottom left"  }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "range",
+      "id": "widget_bottom_position",
+      "label": "Widget bottom position (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "widget_right_or_left_position",
+      "label": "Widget right or left position (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button size (px)",
+      "min": 48,
+      "max": 80,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Contact details"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add your contact details below. Leave any field blank to hide that contact method."
+    },
+    {
+      "type": "color",
+      "id": "contact_btn_background_color",
+      "label": "Contact button background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "contact_btn_icon_color",
+      "label": "Contact button icon color",
+      "default": "#b82928"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_background_color",
+      "label": "Tooltip background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_text_color",
+      "label": "Tooltip text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "phone_tooltip_text",
+      "label": "phone tooltip text",
+      "default": "Continue on Phone"
+    },
+    {
+      "type": "html",
+      "id": "phone_icon",
+      "label": "phone icon SVG",
+      "info": "Paste an inline SVG (32×32 recommended).",
+      "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number (with country code)",
+      "default": "+91 98765 43210"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_tooltip_text",
+      "label": "WhatsApp tooltip text",
+      "default": "Continue on WhatsApp"
+    },
+    {
+      "type": "html",
+      "id": "whatsapp_icon",
+      "label": "WhatsApp icon SVG",
+      "info": "Paste an inline SVG (32×32 recommended).",
+      "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number (with country code)",
+      "default": "+919876543210"
+    },
+    {
+      "type": "text",
+      "id": "email_tooltip_text",
+      "label": "Email tooltip text",
+      "default": "Continue on Email"
+    },
+    {
+      "type": "html",
+      "id": "email_icon",
+      "label": "Email icon SVG",
+      "info": "Paste an inline SVG (32×32 recommended).",
+      "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Support email",
+      "default": "support@yourstore.com"
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "categories_title",
+      "label": "FAQ categories screen title",
+      "default": "FAQ Categories"
+    },
+    {
+      "type": "color",
+      "id": "categories_title_color",
+      "label": "FAQ categories screen title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "categories_card_bg_color",
+      "label": "FAQ categories card background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "categories_card_title_color",
+      "label": "FAQ categories card title color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "featured_questions_title",
+      "label": "Featured questions screen title",
+      "default": "Featured Questions"
+    },
+    {
+      "type": "color",
+      "id": "featured_questions_title_color",
+      "label": "Featured questions screen title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "featured_questions_card_bg_color",
+      "label": "Featured questions card background color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "featured_questions_category_color",
+      "label": "Featured questions category label color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "answer_screen_subtitle_category_color",
+      "label": "Answer screen category label color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "answer_screen_subtitle_category_hover_color",
+      "label": "Answer screen category label hovercolor",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "answer_screen_answer_card_color",
+      "label": "Answer screen answer card color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "answer_screen_answer_card_bg_color",
+      "label": "Answer screen answer card background color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "answer_screen_faq_nav_link_color",
+      "label": "Answer screen FAQ navigation link color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "text",
+      "id": "empty_category_text",
+      "label": "Empty category text",
+      "default": "No questions available in this category."
+    },
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "text",
+      "id": "trigger_label",
+      "label": "Trigger button aria-label",
+      "default": "Open support"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_category",
+      "name": "FAQ Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category name",
+          "default": "Shipping & Delivery"
+        },
+        {
+          "type": "text",
+          "id": "category_id",
+          "label": "Category ID (no spaces)",
+          "info": "Match this value with the Category ID on FAQ Item blocks.",
+          "default": "shipping"
+        },
+        {
+          "type": "html",
+          "id": "category_icon",
+          "label": "Icon SVG",
+          "info": "Paste an inline SVG (32×32 recommended).",
+          "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Add question here"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Add answer here</p>"
+        },
+        {
+          "type": "text",
+          "id": "category_id",
+          "label": "Category ID",
+          "info": "Must match a Category block's Category ID exactly.",
+          "default": "shipping"
+        },
+        {
+          "type": "html",
+          "id": "category_icon",
+          "label": "Category icon SVG",
+          "info": "Paste an inline SVG (32×32 recommended).",
+          "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "category_label",
+          "label": "Category display label",
+          "default": "Shipping & Delivery"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_home",
+          "label": "Show in General Queries on home screen",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support Widget",
+      "category": "Support",
+      "blocks": [
+        {
+          "type": "faq_category",
+          "settings": {
+            "category_name": "Shipping & Delivery",
+            "category_id": "shipping"
+          }
+        },
+        {
+          "type": "faq_category",
+          "settings": {
+            "category_name": "Exchanges & Returns",
+            "category_id": "returns"
+          }
+        },
+        {
+          "type": "faq_category",
+          "settings": {
+            "category_name": "Miscellaneous",
+            "category_id": "misc"
+          }
+        },
+        {
+          "type": "faq_category",
+          "settings": {
+            "category_name": "International Orders",
+            "category_id": "international"
+          }
+        },
+        {
+          "type": "faq_category",
+          "settings": {
+            "category_name": "Contact Information",
+            "category_id": "contact"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does it take to receive an order?",
+            "answer": "<p>Standard delivery takes <strong>5–7 business days</strong> after dispatch.</p>",
+            "category_id": "shipping",
+            "category_label": "Shipping & Delivery",
+            "show_on_home": true
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the shipping rates for orders within India?",
+            "answer": "<p>Free shipping on all orders above ₹499. A flat ₹49 applies below that threshold.</p>",
+            "category_id": "shipping",
+            "category_label": "Shipping & Delivery",
+            "show_on_home": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you ship from?",
+            "answer": "<p>All orders are crafted and dispatched from our production unit in <strong>Faridabad, within the Delhi NCR region</strong>.</p>",
+            "category_id": "shipping",
+            "category_label": "Shipping & Delivery",
+            "show_on_home": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which courier partners do you use for delivery?",
+            "answer": "<p>We partner with <strong>Delhivery, BlueDart, and Ecom Express</strong> depending on your pin code.</p>",
+            "category_id": "shipping",
+            "category_label": "Shipping & Delivery",
+            "show_on_home": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>You will receive a tracking link via SMS and email once your order is dispatched. You can also check under <strong>My Orders</strong> in your account.</p>",
+            "category_id": "shipping",
+            "category_label": "Shipping & Delivery",
+            "show_on_home": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

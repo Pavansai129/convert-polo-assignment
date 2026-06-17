@@ -1,4 +1,16 @@
+/* Screen order is used to figure out whether a screen change should be
+   treated as "forward" (slide in from the right) or "backward" (slide in
+   from the left) when no explicit direction is supplied. */
+const SCREEN_ORDER = ['home', 'category', 'answer'];
 
+/* Heading id for each screen — used to move focus to the right place after
+   a transition completes, and to keep the dialog's aria-labelledby pointing
+   at whichever screen is actually showing. */
+const SCREEN_HEADING_IDS = {
+  home: 'sw-panel-title',
+  category: 'sw-category-title',
+  answer: 'sw-answer-title'
+};
 
 /* ── CUSTOM ELEMENT ──────────────────────────────────────────── */
 class SupportWidget extends HTMLElement {
@@ -9,11 +21,13 @@ class SupportWidget extends HTMLElement {
 
   connectedCallback () {
     /* State */
-    this._isOpen       = false;
-    this._currentScreen  = 'home';
-    this._activeCategoryId = null;
-    this._activeFaqId      = null;
-    this._tooltipTimer     = null;
+    this._isOpen            = false;
+    this._currentScreen     = 'home';
+    this._activeCategoryId  = null;
+    this._activeFaqId       = null;
+    this._tooltipTimer      = null;
+    this._isTransitioning   = false;
+    this._lastFocusedBeforeOpen = null;
 
     /* DOM refs */
     this._triggerBtn    = this.querySelector('#sw-trigger');
@@ -27,8 +41,7 @@ class SupportWidget extends HTMLElement {
     this.arrowIconPrev = this.dataset.arrowIconPrev || '';
     this.arrowIconNext = this.dataset.arrowIconNext || '';
     this.emptyCategoryText = this.dataset.emptyCategoryText || 'No questions in this category yet.';
-    console.log('FAQ Items:', this.faqItems);
-    console.log('FAQ Categories:', this.faqCategories);
+
     this._setupTooltips();
     this._setupEventListeners();
   }
@@ -63,6 +76,8 @@ class SupportWidget extends HTMLElement {
   }
 
   _showTooltip (anchorElement) {
+    if(window.innerWidth < 481) return;
+    if(!anchorElement) return;
     const tooltipText = anchorElement.dataset.tooltip;
     if (!tooltipText) return;
 
@@ -98,9 +113,9 @@ class SupportWidget extends HTMLElement {
 
   /* ── EVENT LISTENERS ───────────────────────────────────────── */
   _setupEventListeners () {
-    this._triggerBtn.addEventListener('click', () => this._openPanel());
-    this._closePanelBtn.addEventListener('click', () => this._closePanel());
-    this._overlayEl.addEventListener('click', () => this._closePanel());
+    this._triggerBtn?.addEventListener('click', () => this._openPanel());
+    this._closePanelBtn?.addEventListener('click', () => this._closePanel());
+    this._overlayEl?.addEventListener('click', () => this._closePanel());
     document.addEventListener('keydown', (keyEvent) => {
       if (!this._isOpen) return;
       if (keyEvent.key === 'Escape') {
@@ -113,7 +128,7 @@ class SupportWidget extends HTMLElement {
       }
     });
 
-    this._panelEl.addEventListener('click', (clickEvent) => {
+    this._panelEl?.addEventListener('click', (clickEvent) => {
       const actionTarget = clickEvent.target.closest('[data-action]');
       if (!actionTarget) return;
 
@@ -138,7 +153,7 @@ class SupportWidget extends HTMLElement {
           this._showHomeScreen();
           break;
 
-        case 'go-to-faq':
+        case 'go-to-faq': {
           const faqData = this.faqItems[actionTarget.dataset.faqId];
           if (faqData) {
             this._showAnswerScreen({
@@ -146,10 +161,14 @@ class SupportWidget extends HTMLElement {
               question:      faqData.question,
               answer:        faqData.answer,
               categoryLabel: faqData.categoryLabel,
-              categoryId:    faqData.categoryId
+              categoryId:    faqData.categoryId,
+              /* "next" pushes forward, "prev" goes backward — matches the
+                 arrow direction the user actually clicked. */
+              direction: actionTarget.dataset.navDirection === 'prev' ? 'backward' : 'forward'
             });
           }
           break;
+        }
 
         case 'go-to-category-from-answer':
           if (this._activeCategoryId) {
@@ -159,7 +178,7 @@ class SupportWidget extends HTMLElement {
       }
     });
 
-    this._answerBackBtn.addEventListener('click', () => {
+    this._answerBackBtn?.addEventListener('click', () => {
       if (this._activeCategoryId) {
         this._showCategoryScreen(this._activeCategoryId);
       } else {
@@ -170,9 +189,21 @@ class SupportWidget extends HTMLElement {
 
   _openPanel () {
     this._isOpen = true;
+    this._lastFocusedBeforeOpen = document.activeElement;
     document.body.style.overflow = 'hidden';
     this.classList.add('sw--open');
     this._triggerBtn.setAttribute('aria-expanded', 'true');
+
+    /* Move focus inside the dialog so the Tab-trap below actually has
+       something of ours to trap. Without this, focus stays on the trigger
+       button (which sits outside .sw-panel), so Tab can escape the widget
+       entirely on the very first press. */
+    requestAnimationFrame(() => {
+      const headingId   = SCREEN_HEADING_IDS[this._currentScreen];
+      const heading      = headingId && this._panelEl.querySelector(`#${headingId}`);
+      const focusTarget  = heading || this._getFirstFocusableElement() || this._panelEl;
+      focusTarget.focus({ preventScroll: true });
+    });
   }
 
   _closePanel () {
@@ -187,14 +218,25 @@ class SupportWidget extends HTMLElement {
     ) || 0.32) * 1000;
 
     setTimeout(() => {
-      this._triggerBtn.focus({ preventScroll: true });
+      /* Return focus to wherever it came from (normally the trigger
+         button), falling back to the trigger if that element is gone. */
+      const refocusTarget = (this._lastFocusedBeforeOpen && document.contains(this._lastFocusedBeforeOpen))
+        ? this._lastFocusedBeforeOpen
+        : this._triggerBtn;
+      refocusTarget.focus({ preventScroll: true });
+      this._lastFocusedBeforeOpen = null;
     }, panelTransitionDuration * 0.6);
   }
 
   _getFocusableElements () {
     return Array.from(this._panelEl.querySelectorAll(
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    )).filter(el => !el.closest('[hidden]') && el.offsetParent !== null);
+    )).filter(el =>
+      !el.closest('[hidden]') &&
+      !el.closest('[inert]') &&
+      !el.closest('[aria-hidden="true"]') &&
+      el.offsetParent !== null
+    );
   }
 
   _getFirstFocusableElement () {
@@ -221,25 +263,123 @@ class SupportWidget extends HTMLElement {
     }
   }
 
-  _setActiveScreen (screenName) {
-    this._currentScreen = screenName;
-    this._panelEl.querySelectorAll('.sw-screen').forEach(screenEl => {
-      const isActive = screenEl.dataset.screen === screenName;
-      screenEl.classList.toggle('sw-screen--active', isActive);
-      if (isActive) screenEl.removeAttribute('hidden');
-      else          screenEl.setAttribute('hidden', '');
+  /* ── SCREEN TRANSITIONS ───────────────────────────────────────
+     Figures out forward/backward automatically from SCREEN_ORDER unless
+     the caller passes an explicit direction (used for prev/next FAQ nav,
+     which moves sideways within the same screen depth). */
+  _resolveDirection (targetScreen, explicitDirection) {
+    if (explicitDirection) return explicitDirection;
+    const fromIndex = SCREEN_ORDER.indexOf(this._currentScreen);
+    const toIndex   = SCREEN_ORDER.indexOf(targetScreen);
+    return toIndex >= fromIndex ? 'forward' : 'backward';
+  }
+
+  _transitionToScreen (targetScreen, { direction = 'forward', onComplete } = {}) {
+    const incomingEl = this._panelEl.querySelector(`[data-screen="${targetScreen}"]`);
+    if (!incomingEl) return;
+
+    const outgoingEl = this._panelEl.querySelector('.sw-screen--active');
+
+    /* Already showing this screen and nothing is mid-animation: just
+       refocus and bail. */
+    if (outgoingEl === incomingEl && !this._isTransitioning) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    /* Ignore new navigation while a transition is running so rapid clicks
+       can't leave two screens half-animated at once. */
+    if (this._isTransitioning) return;
+
+    this._isTransitioning = true;
+    this._currentScreen   = targetScreen;
+
+    const headingId = SCREEN_HEADING_IDS[targetScreen];
+    if (headingId) this._panelEl.setAttribute('aria-labelledby', headingId);
+
+    const enterClass = direction === 'forward' ? 'sw-screen--enter-forward' : 'sw-screen--enter-backward';
+    const exitClass  = direction === 'forward' ? 'sw-screen--exit-forward'  : 'sw-screen--exit-backward';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let settled = false;
+    let fallbackTimer = null;
+
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(fallbackTimer);
+      incomingEl.removeEventListener('transitionend', finish);
+
+      incomingEl.classList.remove(
+        'sw-screen--enter-forward', 'sw-screen--enter-backward',
+        'sw-screen--exit-forward',  'sw-screen--exit-backward'
+      );
+      incomingEl.removeAttribute('aria-hidden');
+      incomingEl.inert = false;
+
+      if (outgoingEl && outgoingEl !== incomingEl) {
+        outgoingEl.classList.remove(
+          'sw-screen--active',
+          'sw-screen--exit-forward', 'sw-screen--exit-backward'
+        );
+        outgoingEl.setAttribute('hidden', '');
+        outgoingEl.removeAttribute('aria-hidden');
+        outgoingEl.inert = false;
+      }
+
+      this._isTransitioning = false;
+      if (onComplete) onComplete();
+    };
+
+    /* Put the incoming screen at its off-screen starting position and make
+       the outgoing screen non-interactive (it's about to slide away). */
+    incomingEl.removeAttribute('hidden');
+    incomingEl.inert = false;
+    incomingEl.classList.add('sw-screen--active', enterClass);
+
+    if (outgoingEl && outgoingEl !== incomingEl) {
+      outgoingEl.inert = true;
+      outgoingEl.setAttribute('aria-hidden', 'true');
+    }
+
+    if (prefersReducedMotion) {
+      finish();
+      return;
+    }
+
+    /* Force a reflow so the browser commits the starting transform/opacity
+       above before we flip to the resting state below — otherwise both
+       style changes can get batched into one frame and the transition
+       never visibly runs. */
+    void incomingEl.offsetWidth;
+
+    requestAnimationFrame(() => {
+      incomingEl.classList.remove(enterClass);
+      if (outgoingEl && outgoingEl !== incomingEl) {
+        outgoingEl.classList.add(exitClass);
+      }
     });
+
+    incomingEl.addEventListener('transitionend', finish);
+    /* Fallback in case transitionend never fires for some reason. */
+    fallbackTimer = setTimeout(finish, 420);
   }
 
   _showHomeScreen () {
     this._activeCategoryId = null;
     this._activeFaqId      = null;
-    this._setActiveScreen('home');
-    const homeTitle = this._panelEl.querySelector('#sw-panel-title');
-    if (homeTitle) homeTitle.focus({ preventScroll: true });
+
+    const direction = this._resolveDirection('home');
+    this._transitionToScreen('home', {
+      direction,
+      onComplete: () => {
+        const homeTitle = this._panelEl.querySelector('#sw-panel-title');
+        if (homeTitle) homeTitle.focus({ preventScroll: true });
+      }
+    });
   }
 
-  _showCategoryScreen (categoryId) {
+  _showCategoryScreen (categoryId, { direction: explicitDirection } = {}) {
     this._activeCategoryId = categoryId;
 
     const categoryData  = this.faqCategories[categoryId] || {};
@@ -251,17 +391,18 @@ class SupportWidget extends HTMLElement {
     const categoryFaqs = Object.values(this.faqItems).filter(faq => faq.categoryId === categoryId);
 
     if (categoryFaqs.length === 0) {
-      faqListEl.innerHTML = `<p class="sw-empty">${this.emptyCategoryText}</p>`;
+      faqListEl.innerHTML = `<p class="sw-empty">${this._escapeHtml(this.emptyCategoryText)}</p>`;
     } else {
       categoryFaqs.forEach(faq => {
         const faqButton = document.createElement('button');
-        faqButton.className            = 'sw-faq-item';
-        faqButton.dataset.action       = 'open-answer';
-        faqButton.dataset.faqId        = faq.id;
-        faqButton.dataset.question     = faq.question;
-        faqButton.dataset.answer       = faq.answer;
+        faqButton.className             = 'sw-faq-item';
+        faqButton.type                  = 'button';
+        faqButton.dataset.action        = 'open-answer';
+        faqButton.dataset.faqId         = faq.id;
+        faqButton.dataset.question      = faq.question;
+        faqButton.dataset.answer        = faq.answer;
         faqButton.dataset.categoryLabel = faq.categoryLabel;
-        faqButton.dataset.categoryId   = faq.categoryId;
+        faqButton.dataset.categoryId    = faq.categoryId;
         faqButton.setAttribute('role', 'listitem');
         faqButton.innerHTML = `
           <span class="sw-faq-item__icon" aria-hidden="true">
@@ -278,21 +419,23 @@ class SupportWidget extends HTMLElement {
       });
     }
 
-    this._setActiveScreen('category');
-    requestAnimationFrame(() => categoryTitle.focus({ preventScroll: true }));
+    const direction = this._resolveDirection('category', explicitDirection);
+    this._transitionToScreen('category', {
+      direction,
+      onComplete: () => categoryTitle.focus({ preventScroll: true })
+    });
   }
 
-  _showAnswerScreen ({ faqId, question, answer, categoryLabel, categoryId }) {
+  _showAnswerScreen ({ faqId, question, answer, categoryLabel, categoryId, direction: explicitDirection } = {}) {
     this._activeFaqId      = faqId;
     this._activeCategoryId = categoryId || this._activeCategoryId;
 
     /* Populate answer */
-    this._panelEl.querySelector('#sw-answer-title').textContent         = question;
-    // this._panelEl.querySelector('#sw-answer-category-label').textContent = categoryLabel;
-    this._panelEl.querySelector('#sw-answer-text').innerHTML             = answer;
+    this._panelEl.querySelector('#sw-answer-title').textContent = question;
+    this._panelEl.querySelector('#sw-answer-text').innerHTML    = answer;
 
     /* Category pill — clicking takes user to category screen */
-    const categoryPill  = this._panelEl.querySelector('#sw-answer-category-btn');
+    const categoryPill      = this._panelEl.querySelector('#sw-answer-category-btn');
     const categoryPillLabel = this._panelEl.querySelector('#sw-answer-category-btn-label');
     categoryPillLabel.textContent   = categoryLabel;
     categoryPill.dataset.categoryId = this._activeCategoryId;
@@ -307,39 +450,32 @@ class SupportWidget extends HTMLElement {
     const currentIndex = siblingFaqs.findIndex(faq => faq.id === faqId);
 
     if (currentIndex > 0) {
-      const previousFaq = siblingFaqs[currentIndex - 1];
-      navContainer.appendChild(
-        this._buildNavLink(previousFaq.question, previousFaq, 'prev')
-      );
+      navContainer.appendChild(this._buildNavLink(siblingFaqs[currentIndex - 1], 'prev'));
     }
     if (currentIndex >= 0 && currentIndex < siblingFaqs.length - 1) {
-      const nextFaq = siblingFaqs[currentIndex + 1];
-      navContainer.appendChild(
-        this._buildNavLink(nextFaq.question, nextFaq, 'next')
-      );
+      navContainer.appendChild(this._buildNavLink(siblingFaqs[currentIndex + 1], 'next'));
     }
 
-    this._setActiveScreen('answer');
-    requestAnimationFrame(() => {
-      const answerTitle = this._panelEl.querySelector('#sw-answer-title');
-      if (answerTitle) answerTitle.focus({ preventScroll: true });
+    const direction = this._resolveDirection('answer', explicitDirection);
+    this._transitionToScreen('answer', {
+      direction,
+      onComplete: () => {
+        const answerTitle = this._panelEl.querySelector('#sw-answer-title');
+        if (answerTitle) answerTitle.focus({ preventScroll: true });
+      }
     });
   }
 
-  _buildNavLink (labelText, faq, direction) {
+  _buildNavLink (faq, navDirection) {
     const navBtn = document.createElement('button');
-    navBtn.className      = `sw-answer-nav__link sw-answer-nav__link--${direction}`;
-    navBtn.dataset.action = 'go-to-faq';
-    navBtn.dataset.faqId  = faq.id;
-    navBtn.dataset.question = faq.question;
-    navBtn.dataset.answer = faq.answer;
-    navBtn.dataset.categoryLabel = faq.categoryLabel;
-    navBtn.dataset.categoryId = faq.categoryId;
+    navBtn.type                 = 'button';
+    navBtn.className            = `sw-answer-nav__link sw-answer-nav__link--${navDirection}`;
+    navBtn.dataset.action       = 'go-to-faq';
+    navBtn.dataset.faqId        = faq.id;
+    navBtn.dataset.navDirection = navDirection;
     navBtn.innerHTML = `
-        ${direction === 'prev'
-          ? this.arrowIconPrev
-          : this.arrowIconNext}
-      <p class="sw-answer-nav__label">${this._escapeHtml(labelText)}</p>`;
+        ${navDirection === 'prev' ? this.arrowIconPrev : this.arrowIconNext}
+      <p class="sw-answer-nav__label">${this._escapeHtml(faq.question)}</p>`;
     return navBtn;
   }
 

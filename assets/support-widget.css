@@ -24,7 +24,7 @@
   }
 }
 
-/* ── OVERLAY ─────────────────────────────────────────────────── */
+/* ========= OVERLAY ================== */
 .sw-overlay {
   position: fixed;
   inset: 0;
@@ -43,7 +43,7 @@
   transition: opacity var(--sw-duration) var(--sw-ease);
 }
 
-/* ── FLOATING TRIGGER BUTTON ─────────────────────────────────── */
+/* ============== FLOATING TRIGGER BUTTON ============== */
 .sw-trigger {
   position: fixed;
   width: var(--sw-btn-size);
@@ -84,39 +84,31 @@
   pointer-events: none;
 }
 
-/* ── PANEL ────────────────────────────────────────────────────── */
+/* ============== PANEL ================== */
 .sw-panel {
   position: fixed;
-
-  /* leave 40px gap at top */
   height: calc(100dvh - 40px);
   width: 100%;
-  /* start hidden below screen */
-  bottom: -10%;
-
+  bottom: -20px;
   z-index: var(--sw-z-index);
-  background: #f4f4f4;
-
+  background: #f4f6f8;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: var(--sw-radius);
-
   opacity: 0;
   visibility: hidden;
-
   transition:
     bottom var(--sw-duration) var(--sw-ease-out),
     opacity 220ms cubic-bezier(.3, 0, .2, 1),
     visibility 0s linear var(--sw-duration);
 }
 
-/* OPEN STATE */
+/* =========== OPEN STATE ================ */
 .sw--open .sw-panel {
   bottom: 0;
   opacity: 1;
   visibility: visible;
-
   transition:
     bottom var(--sw-duration) var(--sw-ease-out),
     opacity 260ms cubic-bezier(.22, 1, .36, 1),
@@ -124,7 +116,7 @@
     visibility 0s;
 }
 
-/* ── PANEL HEADER ─────────────────────────────────────────────── */
+/* ======= PANEL HEADER ======= */
 .sw-header {
   background: var(--sw-primary);
   padding: 20px;
@@ -138,7 +130,7 @@
   justify-content: space-between;
 }
 
-/* ── CONTACT STRIP ────────────────────────────────────────────── */
+/* =========== CONTACT STRIP ================ */
 .sw-contact-strip {
   display: flex;
   align-items: center;
@@ -176,15 +168,13 @@
   pointer-events: none;
 }
 
-/* Tooltip —------------------------------ */
+/* ============= Tooltip ================== */
 .sw-tooltip {
-  font-size: 12px;
   font-weight: 400;
-  border-radius: 3px;
   position: fixed;
-  font-size: 0.72rem;
+  font-size: 12px;
   padding: 4px 8px;
-  border-radius: 0.35rem;
+  border-radius: 3px;
   white-space: nowrap;
   pointer-events: none;
   z-index: calc(var(--sw-z-index) + 10);
@@ -212,7 +202,7 @@
   height: 8px;
 }
 
-/* ── CLOSE BUTTON ─────────────────────────────────────────────── */
+/* =========== CLOSE BUTTON ================ */
 .sw-close-btn {
   color: #ffffff;
   position: absolute;
@@ -260,9 +250,10 @@
 .sw-close-btn svg {
   width: 16px;
   height: 16px;
+  fill: #ffffff;
 }
 
-/* ── WAVE DIVIDER ─────────────────────────────────────────────── */
+/* ============= WAVE DIVIDER ================ */
 .sw-wave {
   position: absolute;
   bottom: -1px;
@@ -278,15 +269,17 @@
   display: block;
 }
 
-/* ── PANEL BODY ───────────────────────────────────────────────── */
+/* ============= PANEL BODY ================ */
 .sw-body {
   flex: 1 1 auto;
   overflow-y: auto;
+  overflow-x: hidden; /* clip screens while they slide in/out horizontally */
   -webkit-overflow-scrolling: touch;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative; /* establishes the containing block for .sw-screen */
 }
 
 .sw-body::-webkit-scrollbar {
@@ -298,14 +291,14 @@
   border-radius: 0.25rem;
 }
 
-/* ── SECTION TITLE ────────────────────────────────────────────── */
+/* ============= SECTION TITLE ================ */
 .sw-section-title {
   font-size: 17px;
   font-weight: 600;
   margin: 10px 0 12px;
 }
 
-/* ── BACK ROW ─────────────────────────────────────────────────── */
+/* =========== BACK ROW ================ */
 .sw-back-row {
   display: flex;
   gap: 16px;
@@ -366,21 +359,23 @@
   transition: color .2s cubic-bezier(.4, .22, .28, 1);
 }
 
-/* ── CATEGORY GRID ────────────────────────────────────────────── */
+/* =========== CATEGORY GRID ================ */
 .sw-category-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.625rem;
+  gap: 12px;
 }
 
 .sw-category-card {
-  background: #fff;
-  border: 1.5px solid #ebebeb;
-  border-radius: 0.75rem;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
   padding: 8px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 4px;
   transition: border-color 0.22s var(--sw-ease),
@@ -388,33 +383,28 @@
     transform 0.22s var(--sw-ease),
     color 0.22s var(--sw-ease);
   text-align: center;
-  color: #444;
-  -webkit-appearance: none;
-  appearance: none;
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 15px;
   font-weight: 500;
-  border: 1.5px solid #ebebeb;
   width: 100%;
 }
 
 .sw-category-card:hover,
 .sw-category-card:focus-visible {
   border-color: var(--sw-primary);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .1);
-  transform: translateY(-0.1rem);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  transform: translateY(-2px);
   color: var(--sw-primary);
   outline: none;
 }
 
 .sw-category-card:focus-visible {
-  outline: 2px solid var(--sw-primary);
-  outline-offset: 2px;
+  outline: none;
 }
 
 .sw-category-card__icon {
-  width: 2rem;
-  height: 2rem;
+  width: 20px;
+  height: 20px;
   color: var(--sw-primary);
   display: flex;
   align-items: center;
@@ -431,16 +421,7 @@
   font-weight: 400;
 }
 
-.sw-category-card--wide {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  padding: 0.9rem 1rem;
-  text-align: left;
-}
-
-/* ── FAQ LIST ─────────────────────────────────────────────────── */
+/* =========== FAQ LIST ================ */
 .sw-faq-list {
   display: flex;
   flex-direction: column;
@@ -454,9 +435,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  cursor: pointer;
   border-radius: 4px;
-  display: flex;
   border: 1px solid transparent;
   box-shadow: 0 0 0 1px #3f3f440d, 0 1px 3px #3f3f4426;
   transition: border .2s, transform .2s, box-shadow .2s var(--sw-ease);
@@ -501,13 +480,12 @@
   margin: 2px 0 0;
 }
 
-/* ── ANSWER CARD ──────────────────────────────────────────────── */
+/* =========== ANSWER CARD ================ */
 .sw-answer-card {
   background: #fff;
-  border-radius: 0.75rem;
+  border-radius: 4px 20px 20px;
   padding: 16px;
   border: 1.5px solid #ebebeb;
-  border-radius: 4px 20px 20px;
   box-shadow: #455a644d 0 20px 15px -20px;
   font-size: 15px;
   font-weight: 400;
@@ -522,7 +500,7 @@
   margin: 0;
 }
 
-/* ── ANSWER CATEGORY PILL (click → go to category) ───────────── */
+/* =========== ANSWER CATEGORY PILL ================ */
 .sw-answer-category-link:hover,
 .sw-answer-category-link:focus-visible {
   outline: none;
@@ -539,7 +517,7 @@
   flex-shrink: 0;
 }
 
-/* ── PREV / NEXT NAV ──────────────────────────────────────────── */
+/* =========== PREV / NEXT NAV ================ */
 .sw-answer-nav {
   display: flex;
   flex-direction: column;
@@ -572,6 +550,7 @@
 .sw-answer-nav__link svg {
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .sw-answer-nav__link:hover,
@@ -583,12 +562,6 @@
 .sw-answer-nav__link:focus-visible {
   outline: 2px solid var(--sw-primary);
   outline-offset: 2px;
-}
-
-.sw-answer-nav__link svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
 }
 
 .sw-answer-nav__link--prev svg {
@@ -609,25 +582,71 @@
   transform: translateX(25%);
 }
 
-/* ── SCREENS ──────────────────────────────────────────────────── */
+/* =========== SCREENS ================ */
+/*
+  All three screens are stacked on top of one another (position: absolute)
+  inside .sw-body (which is position: relative). That lets the outgoing and
+  incoming screens overlap and slide past each other instead of one being
+  removed before the other appears.
+
+  Direction is controlled by the JS adding one of four helper classes:
+    .sw-screen--enter-forward   incoming screen starts off-screen to the right
+    .sw-screen--enter-backward  incoming screen starts off-screen to the left
+    .sw-screen--exit-forward    outgoing screen leaves toward the left
+    .sw-screen--exit-backward   outgoing screen leaves toward the right
+*/
 .sw-screen {
   display: none;
   flex-direction: column;
   gap: 16px;
+  padding: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform var(--sw-duration) var(--sw-ease),
+    opacity var(--sw-duration) var(--sw-ease);
+  will-change: transform, opacity;
 }
 
 .sw-screen--active {
   display: flex;
 }
 
-/* ── EMPTY STATE ──────────────────────────────────────────────── */
+.sw-screen--enter-forward {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.sw-screen--enter-backward {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.sw-screen--exit-forward {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.sw-screen--exit-backward {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-screen {
+    transition: none;
+  }
+}
+
+/* =========== EMPTY STATE ================ */
 .sw-empty {
   color: #999;
   text-align: center;
   font-size: 15px;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 481px) {
   .sw-empty {
     font-size: 14px;
   }
@@ -635,6 +654,8 @@
   .sw-panel {
     width: var(--sw-panel-width);
     box-shadow: var(--sw-shadow-lg);
+    height: calc(95dvh - var(--sw-widget-bottom-position));
+    max-height: calc(95vh - var(--sw-widget-bottom-position));
     width: 376px;
     max-width: 376px;
   }

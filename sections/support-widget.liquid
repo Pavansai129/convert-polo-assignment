@@ -2,12 +2,16 @@
 <script src="{{ 'support-widget.js' | asset_url }}" defer></script>
 
 {%- assign widget_position = section.settings.widget_position -%}
-{%- assign primary_color   = section.settings.primary_color -%}
-{%- assign icon_color      = section.settings.icon_color -%}
-{%- assign btn_size        = section.settings.button_size -%}
+{%- assign trigger_label = section.settings.trigger_label -%}
+{%- assign primary_color = section.settings.primary_color -%}
+{%- assign icon_color = section.settings.icon_color -%}
+{%- assign btn_size = section.settings.button_size -%}
 {%- assign widget_right_or_left_position = section.settings.widget_right_or_left_position -%}
 {%- assign widget_bottom_position = section.settings.widget_bottom_position -%}
 {%- assign support_widget_icon = section.settings.support_widget_icon -%}
+{%- assign whatsapp_number = section.settings.whatsapp_number -%}
+{%- assign phone_number = section.settings.phone_number -%}
+{%- assign contact_email = section.settings.contact_email -%}
 {%- assign phone_tooltip_text = section.settings.phone_tooltip_text -%}
 {%- assign phone_icon = section.settings.phone_icon -%}
 {%- assign whatsapp_tooltip_text = section.settings.whatsapp_tooltip_text -%}
@@ -37,13 +41,17 @@
     --sw-primary:     {{ primary_color }};
     --sw-icon:        {{ icon_color }};
     --sw-btn-size:    {{ btn_size }}px;
+    --sw-widget-bottom-position: {{ widget_bottom_position }}px;
   }
   #support-widget-{{ section.id }} .sw-trigger {
     {{ widget_position }}: {{ widget_right_or_left_position }}px;
   }
-  @media (min-width: 451px) {
+  @media (min-width: 481px) {
     #support-widget-{{ section.id }} .sw-panel-{{ widget_position }} {
       {{ widget_position }}: {{ widget_right_or_left_position }}px;
+    }
+    #support-widget-{{ section.id }}.sw--open .sw-panel {
+      bottom: {{ widget_bottom_position }}px;
     }
   }
   #support-widget-{{ section.id }} .sw-trigger {
@@ -136,19 +144,37 @@
   <support-widget
     class="support-widget"
     id="support-widget-{{ section.id }}"
-    data-position="{{ widget_position }}"
-    data-phone="{{ phone_tooltip_text | escape }}"
-    data-whatsapp="{{ whatsapp_tooltip_text | escape }}"
-    data-email="{{ email_tooltip_text | escape }}"
-    data-faq-items='{{ faq_items | strip_newlines | escape}}'
-    data-faq-categories='{{ faq_categories | strip_newlines | escape }}'
-    data-arrow-icon-prev='{{ arrow_icon_prev | strip_newlines | escape }}'
-    data-arrow-icon-next='{{ arrow_icon_next | strip_newlines | escape }}'
-    data-empty-category-text='{{ empty_category_text | escape }}'
+    {% if widget_position %}
+      data-position="{{ widget_position }}"
+    {% endif %}
+    {% if phone_tooltip_text %}
+      data-phone="{{ phone_tooltip_text | escape }}"
+    {% endif %}
+    {% if whatsapp_tooltip_text %}
+      data-whatsapp="{{ whatsapp_tooltip_text | escape }}"
+    {% endif %}
+    {% if email_tooltip_text %}
+      data-email="{{ email_tooltip_text | escape }}"
+    {% endif %}
+    {% if faq_items %}
+      data-faq-items='{{ faq_items | strip_newlines | escape}}'
+    {% endif %}
+    {% if faq_categories %}
+      data-faq-categories='{{ faq_categories | strip_newlines | escape }}'
+    {% endif %}
+    {% if arrow_icon_prev %}
+      data-arrow-icon-prev='{{ arrow_icon_prev | strip_newlines | escape }}'
+    {% endif %}
+    {% if arrow_icon_next %}
+      data-arrow-icon-next='{{ arrow_icon_next | strip_newlines | escape }}'
+    {% endif %}
+    {% if empty_category_text %}
+      data-empty-category-text='{{ empty_category_text | escape }}'
+    {% endif %}
   >
     <button
       class="sw-trigger"
-      aria-label="{{ section.settings.trigger_label | default: 'Open support' | escape }}"
+      aria-label="{{ trigger_label | default: 'Open support' | escape }}"
       aria-expanded="false"
       aria-controls="sw-panel"
       id="sw-trigger"
@@ -172,11 +198,11 @@
         <div class="sw-header__top">
           <div class="sw-contact-strip" role="group" aria-label="Contact us">
 
-            {% if section.settings.phone_number != blank %}
+            {% if phone_number != blank %}
               <a
-                href="tel:{{ section.settings.phone_number }}"
+                href="tel:{{ phone_number }}"
                 class="sw-contact-btn"
-                aria-label="Call us at {{ section.settings.phone_number }}"
+                aria-label="Call us at {{ phone_number }}"
                 data-tooltip="{{ phone_tooltip_text | escape }}"
               >
                 {% if phone_icon %}
@@ -187,11 +213,11 @@
               </a>
             {% endif %}
 
-            {% if section.settings.whatsapp_number != blank %}
+            {% if whatsapp_number != blank %}
               <a
-                href="https://wa.me/{{ section.settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' }}"
+                href="https://wa.me/{{ whatsapp_number | remove: '+' | remove: ' ' | remove: '-' }}"
                 class="sw-contact-btn"
-                aria-label="Chat on WhatsApp: {{ section.settings.whatsapp_number }}"
+                aria-label="Chat on WhatsApp: {{ whatsapp_number }}"
                 data-tooltip="{{ whatsapp_tooltip_text | escape }}"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -204,11 +230,11 @@
               </a>
             {% endif %}
 
-            {% if section.settings.contact_email != blank %}
+            {% if contact_email != blank %}
               <a
-                href="mailto:{{ section.settings.contact_email }}"
+                href="mailto:{{ contact_email }}"
                 class="sw-contact-btn"
-                aria-label="Email us at {{ section.settings.contact_email }}"
+                aria-label="Email us at {{ contact_email }}"
                 data-tooltip="{{ email_tooltip_text | escape }}"
               >
                 {% if email_icon %}
@@ -226,10 +252,7 @@
             aria-label="Close support panel"
             id="sw-close-btn"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 6 6 18M6 6l12 12"/>
-            </svg>
+            {% render 'svg-icons', icon_name: 'close' %}
           </button>
         </div>
 
@@ -244,20 +267,22 @@
         <div class="sw-screen sw-screen--active" data-screen="home" id="sw-screen-home">
           {% if categories_title %}
             <div class="sw-categories-section">
-              <h2 class="sw-section-title sw-categories-title" id="sw-panel-title">{{ categories_title }}</h2>
+              <h2 class="sw-section-title sw-categories-title" id="sw-panel-title" tabindex="-1">{{ categories_title }}</h2>
               <div class="sw-category-grid" role="list">
                 {% assign category_blocks = section.blocks | where: "type", "faq_category" %}
                 {% for block in category_blocks %}
-                  {% if block.settings.category_icon and block.settings.category_name %}
+                  {% if block.settings.category_name %}
                     <button
                       class="sw-category-card"
                       data-action="open-category"
                       data-category-id="{{ block.settings.category_id }}"
                       role="listitem"
                     >
-                      <span class="sw-category-card__icon" aria-hidden="true">
-                        {{ block.settings.category_icon }}
-                      </span>
+                      {% if block.settings.category_icon and block.settings.hide_icon == false %}
+                        <span class="sw-category-card__icon" aria-hidden="true">
+                          {{ block.settings.category_icon }}
+                        </span>
+                      {% endif %}
                       <span class="sw-category-card__label">{{ block.settings.category_name }}</span>
                     </button>
                   {% endif %}
@@ -477,7 +502,7 @@
       "type": "html",
       "id": "phone_icon",
       "label": "phone icon SVG",
-      "info": "Paste an inline SVG (32×32 recommended).",
+      "info": "Paste an inline SVG (32×32 recommended). if it is left blank, a default phone icon will be used.",
       "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
     },
     {
@@ -496,7 +521,7 @@
       "type": "html",
       "id": "whatsapp_icon",
       "label": "WhatsApp icon SVG",
-      "info": "Paste an inline SVG (32×32 recommended).",
+      "info": "Paste an inline SVG (32×32 recommended). if it is left blank, a default WhatsApp icon will be used.",
       "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
     },
     {
@@ -515,7 +540,7 @@
       "type": "html",
       "id": "email_icon",
       "label": "Email icon SVG",
-      "info": "Paste an inline SVG (32×32 recommended).",
+      "info": "Paste an inline SVG (32×32 recommended). if it is left blank, a default email icon will be used.",
       "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
     },
     {
@@ -585,7 +610,7 @@
     {
       "type": "color",
       "id": "answer_screen_subtitle_category_hover_color",
-      "label": "Answer screen category label hovercolor",
+      "label": "Answer screen category label hover color",
       "default": "#000000"
     },
     {
@@ -647,6 +672,12 @@
           "label": "Icon SVG",
           "info": "Paste an inline SVG (32×32 recommended).",
           "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_icon",
+          "label": "Hide icon on category card",
+          "default": false
         }
       ]
     },

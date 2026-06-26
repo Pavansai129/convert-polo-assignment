@@ -112,8 +112,8 @@
         "faq_item_aBxd7N": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "How do I start the exchange process and is there a time limit to request an exchange?",
+            "answer": "<p>To start an exchange at Banjaaran Studio, submit your request through our<a href=\"https://banjaaran.in/apps/return_prime\" target=\"_blank\">Exchange Request Portal</a>within 7 days of delivery. We cover all shipping costs for exchanges, ensuring a hassle-free process for you.</p>",
             "category_id": "returns",
             "category_label": "Exchanges & Returns",
             "show_on_home": true
@@ -122,8 +122,8 @@
         "faq_item_EkNriq": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "Can I exchange my item for a different product or style?",
+            "answer": "<p>Exchanges are<strong>strictly limited to size changes only</strong>. We do<strong>not allow exchanges</strong>for different products or styles. If you need a different product or style, please<strong>place a new order</strong>for the desired item or contact support for a resolution.</p>",
             "category_id": "returns",
             "category_label": "Exchanges & Returns",
             "show_on_home": true
@@ -132,8 +132,8 @@
         "faq_item_qJ3tFr": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "What are the shipping costs and delivery timeline for international orders?",
+            "answer": "<p><strong>International shipping costs are paid by the customer</strong>and are not included in the free shipping offer. We aim to ship your order within<strong>10-14 days</strong>, but delivery times may vary based on location, distance, and logistics partners.</p>",
             "category_id": "international",
             "category_label": "International Orders",
             "show_on_home": true
@@ -142,8 +142,8 @@
         "faq_item_jFEYzn": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "How can I place my international order and what are the payment options?",
+            "answer": "<p>If you are facing any issues placing an international order, please contact support. For all international orders, payment must be prepaid using<strong>PayPal</strong>or<strong>Razorpay</strong>;<strong>Cash on Delivery (COD) is not available</strong>for these transactions.</p>",
             "category_id": "international",
             "category_label": "International Orders",
             "show_on_home": true
@@ -152,8 +152,8 @@
         "faq_item_TLeACg": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "How can i contact customer support?",
+            "answer": "<p>Our support is available via call, WhatsApp, and email at the provided contact details.</p><p>Call (11am to 6pm):<a href=\"tel:+919999474819\" target=\"_blank\">+91-9999474819</a></p><p>WhatsApp:<a href=\"https://wa.me/919999474819\" target=\"_blank\">+919999474819</a></p><p>Email:<a href=\"mailto:support@banjaaran.in\" target=\"_blank\">support@banjaaran.in</a> / <a href=\"mailto:studio@banjaaran.in\" target=\"_blank\">studio@banjaaran.in</a></p>",
             "category_id": "contact",
             "category_label": "Contact Information",
             "show_on_home": true
@@ -162,8 +162,8 @@
         "faq_item_RpNzWx": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "How can I contact you for business-related queries, like collaborations, business proposals, or bulk order inquiries?",
+            "answer": "<p>For business-related inquiries, please send an email to<a href=\"mailto:karanveer@banjaaran.in\" target=\"_blank\">Karanveer@banjaaran.in</a>and<a href=\"mailto:meera@banjaaran.in\" target=\"_blank\">Meera@banjaaran.in</a>. Be sure to clearly mention the<strong>purpose of your inquiry in the subject line</strong>to ensure a timely response. We look forward to exploring potential opportunities with you.</p>",
             "category_id": "contact",
             "category_label": "Contact Information",
             "show_on_home": true
@@ -172,8 +172,8 @@
         "faq_item_TaCNp3": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "Where are we based and do you have any physical stores?",
+            "answer": "<p>We are based in<strong>Faridabad, Delhi NCR</strong>, where we manage our in-house manufacturing. Currently,<strong>we exclusively sell our products online</strong>and do not operate any physical retail outlets. We<strong>ship PAN India.</strong>Please enjoy browsing our comprehensive online collection, and if you have any queries or need assistance, feel free to reach out.</p>",
             "category_id": "misc",
             "category_label": "Miscellaneous",
             "show_on_home": true
@@ -182,8 +182,8 @@
         "faq_item_KYXVBX": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "Do you offer product customizations?",
+            "answer": "<p>At this time,<strong>we do not offer customizations.</strong>Please explore our existing product range to find items that meet your needs.</p>",
             "category_id": "misc",
             "category_label": "Miscellaneous",
             "show_on_home": true

@@ -63,7 +63,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How long does it take to receive an order?",
-            "answer": "<p>Our products are handcrafted and made-to-order. Typically, it takes<strong>4-5 days to craft</strong>an item, followed by an additional<strong>3-4 days for delivery.</strong>Please allow<strong>7 to 10 days</strong>in total to receive your order.</p>",
+            "answer": "<p>Standard delivery takes <strong>5–7 business days</strong> after dispatch.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": true
@@ -72,11 +72,11 @@
         "faq_item_XbrEfb": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I track my order?",
-            "answer": "<p>Once your order is shipped, you will receive tracking information via<strong>email, SMS, and WhatsApp.</strong>You can use the provided tracking number to monitor the status and estimated delivery date of your order. Link to -&gt;<a href=\"https://banjaaranstudio.ithinklogistics.co.in/\" target=\"_blank\">Order Tracking Page</a></p>",
+            "question": "What are the shipping rates for orders within India?",
+            "answer": "<p>Free shipping on all orders above ₹499. A flat ₹49 applies below that threshold.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
-            "show_on_home": true
+            "show_on_home": false
           }
         },
         "faq_item_8f7bb4": {
@@ -86,7 +86,7 @@
             "answer": "<p>All orders are crafted and dispatched from our production unit in <strong>Faridabad, within the Delhi NCR region</strong>.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
-            "show_on_home": false
+            "show_on_home": true
           }
         },
         "faq_item_yybUAY": {
@@ -106,14 +106,14 @@
             "answer": "<p>You will receive a tracking link via SMS and email once your order is dispatched. You can also check under <strong>My Orders</strong> in your account.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
-            "show_on_home": false
+            "show_on_home": true
           }
         },
         "faq_item_aBxd7N": {
           "type": "faq_item",
           "settings": {
-            "question": "How do I start the exchange process and is there a time limit to request an exchange?",
-            "answer": "<p>To start an exchange at Banjaaran Studio, submit your request through our<a href=\"https://banjaaran.in/apps/return_prime\" target=\"_blank\">Exchange Request Portal</a>within 7 days of delivery. We cover all shipping costs for exchanges, ensuring a hassle-free process for you.</p>",
+            "question": "Add question here 1",
+            "answer": "<p>Add answer here 1</p>",
             "category_id": "returns",
             "category_label": "Exchanges & Returns",
             "show_on_home": true
@@ -122,58 +122,18 @@
         "faq_item_EkNriq": {
           "type": "faq_item",
           "settings": {
-            "question": "How do I start a return and what refund do I get?",
-            "answer": "<p><strong>WE DO NOT OFFER BANK REFUNDS.</strong>Contact us within<strong>7 days</strong>of delivery at<a>support@banjaaran.in</a>or +91-9999474819 with product photos. We cover shipping costs. You'll receive a<strong>credit coupon</strong>for the item’s full price, with no expiration.</p>",
+            "question": "Add question here 2",
+            "answer": "<p>Add answer here 2</p>",
             "category_id": "returns",
             "category_label": "Exchanges & Returns",
-            "show_on_home": true
-          }
-        },
-        "faq_item_Cy6i7N": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What conditions must the item meet for an exchange or return to be eligible?",
-            "answer": "<p>The item must be in immaculate, resellable condition with no signs of wear, and must retain all original packaging, tags, accessories, and gifts.</p>",
-            "category_id": "returns",
-            "category_label": "Exchanges & Returns",
-            "show_on_home": true
-          }
-        },
-        "faq_item_TaCNp3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Where are we based and do you have any physical stores?",
-            "answer": "<p>We are based in<strong>Faridabad, Delhi NCR</strong>, where we manage our in-house manufacturing. Currently,<strong>we exclusively sell our products online</strong>and do not operate any physical retail outlets. We<strong>ship PAN India.</strong>Please enjoy browsing our comprehensive online collection, and if you have any queries or need assistance, feel free to reach out.</p>",
-            "category_id": "misc",
-            "category_label": "Miscellaneous",
-            "show_on_home": true
-          }
-        },
-        "faq_item_KYXVBX": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do you offer product customizations?",
-            "answer": "<p>At this time,<strong>we do not offer customizations.</strong>Please explore our existing product range to find items that meet your needs.</p>",
-            "category_id": "misc",
-            "category_label": "Miscellaneous",
-            "show_on_home": true
-          }
-        },
-        "faq_item_ANTUKJ": {
-          "type": "faq_item",
-          "settings": {
-            "question": "When is a token amount required for COD orders?",
-            "answer": "<p>A token amount of<strong>INR 500</strong>is required for COD orders if you've previously not accepted a COD order, your address is incomplete, or the delivery is to a distant region. This ensures the dedication of our artisans is respected. You'll receive a payment link via email for secure payment.</p>",
-            "category_id": "misc",
-            "category_label": "Miscellaneous",
             "show_on_home": true
           }
         },
         "faq_item_qJ3tFr": {
           "type": "faq_item",
           "settings": {
-            "question": "What are the shipping costs and delivery timeline for international orders?",
-            "answer": "<p><strong>International shipping costs are paid by the customer</strong>and are not included in the free shipping offer. We aim to ship your order within<strong>10-14 days</strong>, but delivery times may vary based on location, distance, and logistics partners.</p>",
+            "question": "Add question here 1",
+            "answer": "<p>Add answer here 1</p>",
             "category_id": "international",
             "category_label": "International Orders",
             "show_on_home": true
@@ -182,18 +142,8 @@
         "faq_item_jFEYzn": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I place my international order and what are the payment options?",
-            "answer": "<p>If you are facing any issues placing an international order, please contact support. For all international orders, payment must be prepaid using<strong>PayPal</strong>or<strong>Razorpay</strong>;<strong>Cash on Delivery (COD) is not available</strong>for these transactions.</p>",
-            "category_id": "international",
-            "category_label": "International Orders",
-            "show_on_home": true
-          }
-        },
-        "faq_item_kgRBtL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Are there additional fees I should be aware of when ordering internationally?",
-            "answer": "<p>Yes, the recipient may be responsible for handling fees and taxes applicable in your country. For orders to the<strong>UK and EU</strong>, Customs and VAT will be charged as per local laws, which are payable by the customer.</p>",
+            "question": "Add question here 2",
+            "answer": "<p>Add answer here 2</p>",
             "category_id": "international",
             "category_label": "International Orders",
             "show_on_home": true
@@ -202,8 +152,8 @@
         "faq_item_TLeACg": {
           "type": "faq_item",
           "settings": {
-            "question": "How can i contact customer support?",
-            "answer": "<p>Our support is available via call, WhatsApp, and email at the provided contact details.</p><p>Call (11am to 6pm):<a href=\"tel:+919999474819\" target=\"_blank\">+91-9999474819</a></p><p>WhatsApp:<a href=\"https://wa.me/919999474819\" target=\"_blank\">+919999474819</a></p><p>Email:<a href=\"mailto:support@banjaaran.in\" target=\"_blank\">support@banjaaran.in</a> / <a href=\"mailto:studio@banjaaran.in\" target=\"_blank\">studio@banjaaran.in</a></p>",
+            "question": "Add question here 1",
+            "answer": "<p>Add answer here 1</p>",
             "category_id": "contact",
             "category_label": "Contact Information",
             "show_on_home": true
@@ -212,20 +162,30 @@
         "faq_item_RpNzWx": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I contact you for business-related queries, like collaborations, business proposals, or bulk order inquiries?",
-            "answer": "<p>For business-related inquiries, please send an email to<a href=\"mailto:karanveer@banjaaran.in\" target=\"_blank\">Karanveer@banjaaran.in</a>and<a href=\"mailto:meera@banjaaran.in\" target=\"_blank\">Meera@banjaaran.in</a>. Be sure to clearly mention the<strong>purpose of your inquiry in the subject line</strong>to ensure a timely response. We look forward to exploring potential opportunities with you.</p>",
+            "question": "Add question here 2",
+            "answer": "<p>Add answer here 2</p>",
             "category_id": "contact",
             "category_label": "Contact Information",
             "show_on_home": true
           }
         },
-        "faq_item_LQPHGc": {
+        "faq_item_TaCNp3": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I apply for a work opportunity at Banjaaran Studio?",
-            "answer": "<p>Please fill out the application form available at the following link (<a href=\"https://forms.gle/WjH8MhVfQ3TbWDf46\" target=\"_blank\">Careers form link</a>) to apply for work opportunities at Banjaaran Studio. We look forward to considering your application.</p>",
-            "category_id": "contact",
-            "category_label": "Contact Information",
+            "question": "Add question here 1",
+            "answer": "<p>Add answer here 1</p>",
+            "category_id": "misc",
+            "category_label": "Miscellaneous",
+            "show_on_home": true
+          }
+        },
+        "faq_item_KYXVBX": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Add question here 2",
+            "answer": "<p>Add answer here 2</p>",
+            "category_id": "misc",
+            "category_label": "Miscellaneous",
             "show_on_home": true
           }
         }
@@ -243,31 +203,27 @@
         "faq_item_MtGgCN",
         "faq_item_aBxd7N",
         "faq_item_EkNriq",
-        "faq_item_Cy6i7N",
-        "faq_item_TaCNp3",
-        "faq_item_KYXVBX",
-        "faq_item_ANTUKJ",
         "faq_item_qJ3tFr",
         "faq_item_jFEYzn",
-        "faq_item_kgRBtL",
         "faq_item_TLeACg",
         "faq_item_RpNzWx",
-        "faq_item_LQPHGc"
+        "faq_item_TaCNp3",
+        "faq_item_KYXVBX"
       ],
       "name": "Support Widget",
       "settings": {
-        "primary_color": "#b82928",
-        "support_widget_heading_color": "#202223",
-        "support_widget_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M136,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c24.814,0,45-20.186,45-45V255 C181,230.186,160.814,210,136,210z\"></path><path d=\"M61,255c0-4.327,0.571-8.507,1.278-12.634C44.2,248.209,31,265.001,31,285v62c0,19.999,13.2,36.791,31.278,42.634 C61.571,385.507,61,381.327,61,377V255z\"></path><path d=\"M376,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c4.51,0,8.782-0.868,12.892-2.108 C383.308,438.401,366.305,452,346,452h-47.763c-6.213-17.422-22.707-30-42.237-30c-24.814,0-45,20.186-45,45 c0,24.814,20.186,45,45,45c19.53,0,36.024-12.578,42.237-30H346c41.353,0,75-33.647,75-75v-30V255 C421,230.186,400.814,210,376,210z\"></path><path d=\"M449.722,242.366C450.429,246.493,451,250.673,451,255v122c0,4.327-0.571,8.507-1.278,12.634 C467.8,383.791,481,366.999,481,347v-62C481,265.001,467.8,248.209,449.722,242.366z\"></path><path d=\"M256,0C131.928,0,31,100.928,31,225v0.383c8.937-6.766,19.277-11.717,30.687-13.934C68.698,110.251,153.054,30,256,30 s187.302,80.251,194.313,181.448c11.409,2.217,21.749,7.169,30.687,13.934V225C481,100.928,380.072,0,256,0z\"></path></svg>",
+        "primary_color": "#c0392b",
+        "support_widget_heading_color": "#000000",
+        "support_widget_icon": "<svg class=\"rafaq-svg\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M136,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c24.814,0,45-20.186,45-45V255 C181,230.186,160.814,210,136,210z\"></path><path d=\"M61,255c0-4.327,0.571-8.507,1.278-12.634C44.2,248.209,31,265.001,31,285v62c0,19.999,13.2,36.791,31.278,42.634 C61.571,385.507,61,381.327,61,377V255z\"></path><path d=\"M376,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c4.51,0,8.782-0.868,12.892-2.108 C383.308,438.401,366.305,452,346,452h-47.763c-6.213-17.422-22.707-30-42.237-30c-24.814,0-45,20.186-45,45 c0,24.814,20.186,45,45,45c19.53,0,36.024-12.578,42.237-30H346c41.353,0,75-33.647,75-75v-30V255 C421,230.186,400.814,210,376,210z\"></path><path d=\"M449.722,242.366C450.429,246.493,451,250.673,451,255v122c0,4.327-0.571,8.507-1.278,12.634 C467.8,383.791,481,366.999,481,347v-62C481,265.001,467.8,248.209,449.722,242.366z\"></path><path d=\"M256,0C131.928,0,31,100.928,31,225v0.383c8.937-6.766,19.277-11.717,30.687-13.934C68.698,110.251,153.054,30,256,30 s187.302,80.251,194.313,181.448c11.409,2.217,21.749,7.169,30.687,13.934V225C481,100.928,380.072,0,256,0z\"></path></svg>",
         "support_widget_trigger_icon_color": "#ffffff",
         "widget_position": "left",
-        "widget_bottom_position": 88,
-        "widget_right_or_left_position": 16,
+        "widget_bottom_position": 24,
+        "widget_right_or_left_position": 40,
         "button_size": 60,
         "contact_btn_background_color": "#ffffff",
         "contact_btn_icon_color": "#b82928",
         "tooltip_background_color": "#ffffff",
-        "tooltip_text_color": "#202223",
+        "tooltip_text_color": "#000000",
         "phone_tooltip_text": "Continue on Phone",
         "phone_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z\"></path></svg>",
         "phone_number": "+9198765 43210",
@@ -279,16 +235,16 @@
         "contact_email": "support@yourstore.com",
         "categories_title": "FAQ Categories",
         "categories_card_bg_color": "#ffffff",
-        "categories_card_title_color": "#6d7175",
-        "featured_questions_title": "General Queries",
+        "categories_card_title_color": "#000000",
+        "featured_questions_title": "Featured Questions",
         "featured_questions_card_bg_color": "#f5f5f5",
-        "featured_questions_card_question_color": "#202223",
-        "featured_questions_category_color": "#6d7175",
+        "featured_questions_card_question_color": "#000000",
+        "featured_questions_category_color": "#999999",
         "answer_screen_subtitle_category_color": "#999999",
         "answer_screen_subtitle_category_hover_color": "#000000",
-        "answer_screen_answer_card_color": "#202223",
-        "answer_screen_answer_card_bg_color": "#FFFFFF",
-        "answer_screen_faq_nav_link_color": "#6D7175",
+        "answer_screen_answer_card_color": "#1a1a1a",
+        "answer_screen_answer_card_bg_color": "#f5f5f5",
+        "answer_screen_faq_nav_link_color": "#1a1a1a",
         "empty_category_text": "No questions available in this category.",
         "trigger_label": "Open support"
       }

@@ -4,7 +4,7 @@
 {%- assign widget_position = section.settings.widget_position -%}
 {%- assign trigger_label = section.settings.trigger_label -%}
 {%- assign primary_color = section.settings.primary_color -%}
-{%- assign icon_color = section.settings.icon_color -%}
+{%- assign support_widget_trigger_icon_color = section.settings.support_widget_trigger_icon_color -%}
 {%- assign btn_size = section.settings.button_size -%}
 {%- assign widget_right_or_left_position = section.settings.widget_right_or_left_position -%}
 {%- assign widget_bottom_position = section.settings.widget_bottom_position -%}
@@ -23,11 +23,12 @@
 {%- assign contact_btn_background_color = section.settings.contact_btn_background_color -%}
 {%- assign contact_btn_icon_color = section.settings.contact_btn_icon_color -%}
 {%- assign categories_title = section.settings.categories_title -%}
-{%- assign categories_title_color = section.settings.categories_title_color -%}
 {%- assign categories_card_title_color = section.settings.categories_card_title_color -%}
 {%- assign categories_card_bg_color = section.settings.categories_card_bg_color -%}
 {%- assign featured_questions_title = section.settings.featured_questions_title -%}
-{%- assign featured_questions_title_color = section.settings.featured_questions_title_color -%}
+{%- assign support_widget_heading_color = section.settings.support_widget_heading_color -%}
+{%- assign featured_questions_card_bg_color = section.settings.featured_questions_card_bg_color -%}
+{%- assign featured_questions_card_question_color = section.settings.featured_questions_card_question_color -%}
 {%- assign featured_questions_category_color = section.settings.featured_questions_category_color -%}
 {%- assign answer_screen_subtitle_category_color = section.settings.answer_screen_subtitle_category_color -%}
 {%- assign answer_screen_subtitle_category_hover_color = section.settings.answer_screen_subtitle_category_hover_color -%}
@@ -38,9 +39,9 @@
 
 {% style %}
   #support-widget-{{ section.id }} {
-    --sw-primary:     {{ primary_color }};
-    --sw-icon:        {{ icon_color }};
-    --sw-btn-size:    {{ btn_size }}px;
+    --sw-primary: {{ primary_color }};
+    --sw-trigger-icon-color: {{ support_widget_trigger_icon_color }};
+    --sw-btn-size: {{ btn_size }}px;
     --sw-widget-bottom-position: {{ widget_bottom_position }}px;
   }
   #support-widget-{{ section.id }} .sw-trigger {
@@ -49,9 +50,6 @@
   @media (min-width: 481px) {
     #support-widget-{{ section.id }} .sw-panel-{{ widget_position }} {
       {{ widget_position }}: {{ widget_right_or_left_position }}px;
-    }
-    #support-widget-{{ section.id }}.sw--open .sw-panel {
-      bottom: {{ widget_bottom_position }}px;
     }
   }
   #support-widget-{{ section.id }} .sw-trigger {
@@ -69,8 +67,10 @@
     background: {{ contact_btn_background_color }};
     color: {{ contact_btn_icon_color }};
   }
-  #support-widget-{{ section.id }} .sw-categories-title {
-    color: {{ categories_title_color }};
+  #support-widget-{{ section.id }} .sw-categories-title,
+  #support-widget-{{ section.id }} .sw-screen-title,
+  #support-widget-{{ section.id }} .sw-featured-questions-title {
+    color: {{ support_widget_heading_color }};
   }
   #support-widget-{{ section.id }} .sw-category-card {
     background: {{ categories_card_bg_color }};
@@ -78,8 +78,11 @@
   #support-widget-{{ section.id }} .sw-category-card__label {
     color: {{ categories_card_title_color }};
   }
-  #support-widget-{{ section.id }} .sw-featured-questions-title {
-    color: {{ featured_questions_title_color }};
+  #support-widget-{{ section.id }} .sw-faq-item {
+    background: {{ featured_questions_card_bg_color }};
+  }
+  #support-widget-{{ section.id }} .sw-faq-item__question {
+    color: {{ featured_questions_card_question_color }};
   }
   #support-widget-{{ section.id }} .sw-faq-item__category {
     color: {{ featured_questions_category_color }};
@@ -90,7 +93,7 @@
   #support-widget-{{ section.id }} .sw-screen-subtitle:hover {
     color: {{ answer_screen_subtitle_category_hover_color }};
   }
-  #support-widget-{{ section.id }} .sw-answer-text {
+  #support-widget-{{ section.id }} .sw-answer-card {
     color: {{ answer_screen_answer_card_color }};
     background: {{ answer_screen_answer_card_bg_color }};
   }
@@ -412,7 +415,14 @@
       "type": "color",
       "id": "primary_color",
       "label": "Primary color",
-      "default": "#C0392B"
+      "default": "#C0392B",
+      "info": "This color is applied to widget icon background, widget header background and category icons."
+    },
+    {
+      "type": "color",
+      "id": "support_widget_heading_color",
+      "label": "Widget heading color",
+      "default": "#000000"
     },
     {
       "type": "html",
@@ -423,8 +433,8 @@
     },
     {
       "type": "color",
-      "id": "icon_color",
-      "label": "Icon / text color",
+      "id": "support_widget_trigger_icon_color",
+      "label": "Widget icon color",
       "default": "#FFFFFF"
     },
     {
@@ -555,19 +565,13 @@
     },
     {
       "type": "header",
-      "content": "FAQ"
+      "content": "FAQ category settings"
     },
     {
       "type": "text",
       "id": "categories_title",
       "label": "FAQ categories screen title",
       "default": "FAQ Categories"
-    },
-    {
-      "type": "color",
-      "id": "categories_title_color",
-      "label": "FAQ categories screen title color",
-      "default": "#000000"
     },
     {
       "type": "color",
@@ -582,16 +586,18 @@
       "default": "#000000"
     },
     {
+      "type": "header",
+      "content": "FAQ color settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "The following FAQ card colors are applied to both featured FAQ cards and Category screen FAQ cards"
+    },
+    {
       "type": "text",
       "id": "featured_questions_title",
       "label": "Featured questions screen title",
       "default": "Featured Questions"
-    },
-    {
-      "type": "color",
-      "id": "featured_questions_title_color",
-      "label": "Featured questions screen title color",
-      "default": "#1a1a1a"
     },
     {
       "type": "color",
@@ -601,9 +607,19 @@
     },
     {
       "type": "color",
+      "id": "featured_questions_card_question_color",
+      "label": "Featured questions card question color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
       "id": "featured_questions_category_color",
       "label": "Featured questions category label color",
       "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Answer screen color settings"
     },
     {
       "type": "color",

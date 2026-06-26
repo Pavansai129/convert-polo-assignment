@@ -262,14 +262,13 @@
           </svg>
         </div>
       </div>
-
+      {% assign category_blocks = section.blocks | where: "type", "faq_category" %}
       <div class="sw-body">
         <div class="sw-screen sw-screen--active" data-screen="home" id="sw-screen-home">
           {% if categories_title %}
             <div class="sw-categories-section">
               <h2 class="sw-section-title sw-categories-title" id="sw-panel-title" tabindex="-1">{{ categories_title }}</h2>
               <div class="sw-category-grid" role="list">
-                {% assign category_blocks = section.blocks | where: "type", "faq_category" %}
                 {% for block in category_blocks %}
                   {% if block.settings.category_name %}
                     <button
@@ -337,11 +336,15 @@
                       data-category-id="{{ block.settings.category_id | escape }}"
                       role="listitem"
                     >
-                      {% if block.settings.category_icon %}
-                        <span class="sw-faq-item__icon" aria-hidden="true">
-                          {{ block.settings.category_icon }}
-                        </span>
-                      {% endif %}
+                      {% for category_block in category_blocks %}
+                        {% assign category_block_id = category_block.settings.category_id | strip %}
+                        {% assign faq_item_block_id = block.settings.category_id | strip %}
+                        {% if category_block_id == faq_item_block_id %}
+                          <span class="sw-faq-item__icon" aria-hidden="true">
+                            {{ category_block.settings.category_icon }}
+                          </span>
+                        {% endif %}
+                      {% endfor %}
                       <span>
                         <p class="sw-faq-item__question">{{ block.settings.question }}</p>
                         <p class="sw-faq-item__category">{{ block.settings.category_label }}</p>
@@ -703,13 +706,6 @@
           "label": "Category ID",
           "info": "Must match a Category block's Category ID exactly.",
           "default": "shipping"
-        },
-        {
-          "type": "html",
-          "id": "category_icon",
-          "label": "Category icon SVG",
-          "info": "Paste an inline SVG (32×32 recommended).",
-          "default": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8'/></svg>"
         },
         {
           "type": "text",

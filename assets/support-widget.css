@@ -403,8 +403,8 @@
 }
 
 .sw-category-card__icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   color: var(--sw-primary);
   display: flex;
   align-items: center;
@@ -466,6 +466,11 @@
   color: var(--sw-primary);
   flex-shrink: 0;
   margin-top: 0.05rem;
+}
+
+.sw-faq-item__icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .sw-faq-item__question {
@@ -614,22 +619,22 @@
 }
 
 .sw-screen--enter-forward {
-  transform: translateX(100%);
+  transform: translateX(20%);
   opacity: 0;
 }
 
 .sw-screen--enter-backward {
-  transform: translateX(-100%);
+  transform: translateX(-20%);
   opacity: 0;
 }
 
 .sw-screen--exit-forward {
-  transform: translateX(-100%);
+  transform: translateX(-20%);
   opacity: 0;
 }
 
 .sw-screen--exit-backward {
-  transform: translateX(100%);
+  transform: translateX(20%);
   opacity: 0;
 }
 

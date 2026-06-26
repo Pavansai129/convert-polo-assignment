@@ -587,6 +587,31 @@
   transform: translateX(25%);
 }
 
+/* ── ANSWER CONTENT SWAP (Prev / Next) ───────────────────────── */
+.sw-answer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--sw-duration) var(--sw-ease),
+    opacity var(--sw-duration) var(--sw-ease);
+}
+
+.sw-answer-heading {
+  transition: opacity var(--sw-duration) var(--sw-ease);
+}
+
+.sw-answer-body--exit-forward   { transform: translateX(-1rem); opacity: 0; }
+.sw-answer-body--exit-backward  { transform: translateX(1rem);  opacity: 0; }
+.sw-answer-body--enter-forward  { transform: translateX(1rem);  opacity: 0; }
+.sw-answer-body--enter-backward { transform: translateX(-1rem); opacity: 0; }
+
+.sw-answer-heading--exit-forward,
+.sw-answer-heading--exit-backward,
+.sw-answer-heading--enter-forward,
+.sw-answer-heading--enter-backward {
+  opacity: 0;
+}
+
 /* =========== SCREENS ================ */
 /*
   All three screens are stacked on top of one another (position: absolute)
@@ -639,7 +664,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sw-screen {
+  .sw-screen,
+  .sw-answer-body,
+  .sw-answer-heading {
     transition: none;
   }
 }

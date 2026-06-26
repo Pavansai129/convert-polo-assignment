@@ -373,7 +373,7 @@
             <button class="sw-back-btn" id="sw-answer-back-btn" aria-label="Back">
               {% render 'svg-icons', icon_name: 'back-arrow' %}
             </button>
-            <div>
+            <div class="sw-answer-heading" id="sw-answer-heading">
               <h2 class="sw-screen-title" id="sw-answer-title" tabindex="-1"></h2>
               <button
               class="sw-screen-subtitle sw-answer-category-link"
@@ -385,12 +385,13 @@
             </button>
             </div>
           </div>
+          <div class="sw-answer-body" id="sw-answer-body">
+            <div class="sw-answer-card">
+              <div id="sw-answer-text"></div>
+            </div>
 
-          <div class="sw-answer-card">
-            <div id="sw-answer-text"></div>
+            <div class="sw-answer-nav" id="sw-answer-nav"></div>
           </div>
-
-          <div class="sw-answer-nav" id="sw-answer-nav"></div>
         </div>
 
       </div>

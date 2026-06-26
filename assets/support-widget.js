@@ -19,22 +19,23 @@ class SupportWidget extends HTMLElement {
     super();
   }
 
-  connectedCallback () {
+  connectedCallback() {
     /* State */
-    this._isOpen            = false;
-    this._currentScreen     = 'home';
-    this._activeCategoryId  = null;
-    this._activeFaqId       = null;
-    this._tooltipTimer      = null;
-    this._isTransitioning   = false;
+    this._isOpen = false;
+    this._currentScreen = 'home';
+    this._activeCategoryId = null;
+    this._activeFaqId = null;
+    this._answerOrigin = null;
+    this._tooltipTimer = null;
+    this._isTransitioning = false;
     this._lastFocusedBeforeOpen = null;
 
     /* DOM refs */
-    this._triggerBtn    = this.querySelector('#sw-trigger');
-    this._overlayEl     = this.querySelector('#sw-overlay');
-    this._panelEl       = this.querySelector('#sw-panel');
+    this._triggerBtn = this.querySelector('#sw-trigger');
+    this._overlayEl = this.querySelector('#sw-overlay');
+    this._panelEl = this.querySelector('#sw-panel');
     this._closePanelBtn = this.querySelector('#sw-close-btn');
-    this._tooltipEl     = this.querySelector('#sw-tooltip');
+    this._tooltipEl = this.querySelector('#sw-tooltip');
     this._answerBackBtn = this.querySelector('#sw-answer-back-btn');
     this.faqItems = JSON.parse(this.dataset.faqItems || '{}');
     this.faqCategories = JSON.parse(this.dataset.faqCategories || '{}');
@@ -47,7 +48,7 @@ class SupportWidget extends HTMLElement {
   }
 
   /* ── TOOLTIP SYSTEM ────────────────────────────────────────── */
-  _setupTooltips () {
+  _setupTooltips() {
     const contactButtons = this.querySelectorAll('.sw-contact-btn[data-tooltip]');
 
     contactButtons.forEach(btn => {
@@ -57,8 +58,8 @@ class SupportWidget extends HTMLElement {
       /* Mouse */
       btn.addEventListener('mouseenter', showTooltip);
       btn.addEventListener('mouseleave', hideTooltip);
-      btn.addEventListener('focus',      showTooltip);
-      btn.addEventListener('blur',       hideTooltip);
+      btn.addEventListener('focus', showTooltip);
+      btn.addEventListener('blur', hideTooltip);
 
       /* Long-press for touch */
       btn.addEventListener('touchstart', (touchEvent) => {
@@ -75,9 +76,9 @@ class SupportWidget extends HTMLElement {
     });
   }
 
-  _showTooltip (anchorElement) {
-    if(window.innerWidth < 481) return;
-    if(!anchorElement) return;
+  _showTooltip(anchorElement) {
+    if (window.innerWidth < 481) return;
+    if (!anchorElement) return;
     const tooltipText = anchorElement.dataset.tooltip;
     if (!tooltipText) return;
 
@@ -93,7 +94,7 @@ class SupportWidget extends HTMLElement {
     leftPos = Math.max(8, Math.min(leftPos, window.innerWidth - tooltipWidth - 8));
 
     this._tooltipEl.style.left = leftPos + 'px';
-    this._tooltipEl.style.top  = (anchorRect.top - 40) + 'px';
+    this._tooltipEl.style.top = (anchorRect.top - 40) + 'px';
 
     /* Measure actual width after paint and re-center */
     requestAnimationFrame(() => {
@@ -101,18 +102,18 @@ class SupportWidget extends HTMLElement {
       let correctedLeft = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
       correctedLeft = Math.max(8, Math.min(correctedLeft, window.innerWidth - tooltipRect.width - 8));
       this._tooltipEl.style.left = correctedLeft + 'px';
-      this._tooltipEl.style.top  = (anchorRect.top - tooltipRect.height - 8) + 'px';
+      this._tooltipEl.style.top = (anchorRect.top - tooltipRect.height - 8) + 'px';
       this._tooltipEl.classList.add('sw-tooltip--visible');
     });
   }
 
-  _hideTooltip () {
+  _hideTooltip() {
     this._tooltipEl.classList.remove('sw-tooltip--visible');
     this._tooltipEl.setAttribute('aria-hidden', 'true');
   }
 
   /* ── EVENT LISTENERS ───────────────────────────────────────── */
-  _setupEventListeners () {
+  _setupEventListeners() {
     this._triggerBtn?.addEventListener('click', () => this._openPanel());
     this._closePanelBtn?.addEventListener('click', () => this._closePanel());
     this._overlayEl?.addEventListener('click', () => this._closePanel());
@@ -140,12 +141,13 @@ class SupportWidget extends HTMLElement {
           break;
 
         case 'open-answer':
+          this._answerOrigin = this._currentScreen;
           this._showAnswerScreen({
-            faqId:         actionTarget.dataset.faqId,
-            question:      actionTarget.dataset.question,
-            answer:        actionTarget.dataset.answer,
+            faqId: actionTarget.dataset.faqId,
+            question: actionTarget.dataset.question,
+            answer: actionTarget.dataset.answer,
             categoryLabel: actionTarget.dataset.categoryLabel,
-            categoryId:    actionTarget.dataset.categoryId
+            categoryId: actionTarget.dataset.categoryId
           });
           break;
 
@@ -157,11 +159,11 @@ class SupportWidget extends HTMLElement {
           const faqData = this.faqItems[actionTarget.dataset.faqId];
           if (faqData) {
             this._showAnswerScreen({
-              faqId:         faqData.id,
-              question:      faqData.question,
-              answer:        faqData.answer,
+              faqId: faqData.id,
+              question: faqData.question,
+              answer: faqData.answer,
               categoryLabel: faqData.categoryLabel,
-              categoryId:    faqData.categoryId,
+              categoryId: faqData.categoryId,
               /* "next" pushes forward, "prev" goes backward — matches the
                  arrow direction the user actually clicked. */
               direction: actionTarget.dataset.navDirection === 'prev' ? 'backward' : 'forward'
@@ -179,7 +181,7 @@ class SupportWidget extends HTMLElement {
     });
 
     this._answerBackBtn?.addEventListener('click', () => {
-      if (this._activeCategoryId) {
+      if (this._answerOrigin === 'category' && this._activeCategoryId) {
         this._showCategoryScreen(this._activeCategoryId);
       } else {
         this._showHomeScreen();
@@ -187,7 +189,7 @@ class SupportWidget extends HTMLElement {
     });
   }
 
-  _openPanel () {
+  _openPanel() {
     this._isOpen = true;
     this._lastFocusedBeforeOpen = document.activeElement;
     document.body.style.overflow = 'hidden';
@@ -199,14 +201,14 @@ class SupportWidget extends HTMLElement {
        button (which sits outside .sw-panel), so Tab can escape the widget
        entirely on the very first press. */
     requestAnimationFrame(() => {
-      const headingId   = SCREEN_HEADING_IDS[this._currentScreen];
-      const heading      = headingId && this._panelEl.querySelector(`#${headingId}`);
-      const focusTarget  = heading || this._getFirstFocusableElement() || this._panelEl;
+      const headingId = SCREEN_HEADING_IDS[this._currentScreen];
+      const heading = headingId && this._panelEl.querySelector(`#${headingId}`);
+      const focusTarget = heading || this._getFirstFocusableElement() || this._panelEl;
       focusTarget.focus({ preventScroll: true });
     });
   }
 
-  _closePanel () {
+  _closePanel() {
     this._isOpen = false;
     document.body.style.overflow = '';
     this.classList.remove('sw--open');
@@ -228,7 +230,7 @@ class SupportWidget extends HTMLElement {
     }, panelTransitionDuration * 0.6);
   }
 
-  _getFocusableElements () {
+  _getFocusableElements() {
     return Array.from(this._panelEl.querySelectorAll(
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
     )).filter(el =>
@@ -239,14 +241,14 @@ class SupportWidget extends HTMLElement {
     );
   }
 
-  _getFirstFocusableElement () {
+  _getFirstFocusableElement() {
     return this._getFocusableElements()[0] || null;
   }
 
-  _handleFocusTrap (keyEvent) {
+  _handleFocusTrap(keyEvent) {
     const focusableElements = this._getFocusableElements();
     const firstElement = focusableElements[0];
-    const lastElement  = focusableElements[focusableElements.length - 1];
+    const lastElement = focusableElements[focusableElements.length - 1];
 
     if (!firstElement) return;
 
@@ -267,14 +269,14 @@ class SupportWidget extends HTMLElement {
      Figures out forward/backward automatically from SCREEN_ORDER unless
      the caller passes an explicit direction (used for prev/next FAQ nav,
      which moves sideways within the same screen depth). */
-  _resolveDirection (targetScreen, explicitDirection) {
+  _resolveDirection(targetScreen, explicitDirection) {
     if (explicitDirection) return explicitDirection;
     const fromIndex = SCREEN_ORDER.indexOf(this._currentScreen);
-    const toIndex   = SCREEN_ORDER.indexOf(targetScreen);
+    const toIndex = SCREEN_ORDER.indexOf(targetScreen);
     return toIndex >= fromIndex ? 'forward' : 'backward';
   }
 
-  _transitionToScreen (targetScreen, { direction = 'forward', onComplete } = {}) {
+  _transitionToScreen(targetScreen, { direction = 'forward', onComplete } = {}) {
     const incomingEl = this._panelEl.querySelector(`[data-screen="${targetScreen}"]`);
     if (!incomingEl) return;
 
@@ -292,13 +294,13 @@ class SupportWidget extends HTMLElement {
     if (this._isTransitioning) return;
 
     this._isTransitioning = true;
-    this._currentScreen   = targetScreen;
+    this._currentScreen = targetScreen;
 
     const headingId = SCREEN_HEADING_IDS[targetScreen];
     if (headingId) this._panelEl.setAttribute('aria-labelledby', headingId);
 
     const enterClass = direction === 'forward' ? 'sw-screen--enter-forward' : 'sw-screen--enter-backward';
-    const exitClass  = direction === 'forward' ? 'sw-screen--exit-forward'  : 'sw-screen--exit-backward';
+    const exitClass = direction === 'forward' ? 'sw-screen--exit-forward' : 'sw-screen--exit-backward';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let settled = false;
@@ -312,7 +314,7 @@ class SupportWidget extends HTMLElement {
 
       incomingEl.classList.remove(
         'sw-screen--enter-forward', 'sw-screen--enter-backward',
-        'sw-screen--exit-forward',  'sw-screen--exit-backward'
+        'sw-screen--exit-forward', 'sw-screen--exit-backward'
       );
       incomingEl.removeAttribute('aria-hidden');
       incomingEl.inert = false;
@@ -365,9 +367,10 @@ class SupportWidget extends HTMLElement {
     fallbackTimer = setTimeout(finish, 420);
   }
 
-  _showHomeScreen () {
+  _showHomeScreen() {
     this._activeCategoryId = null;
-    this._activeFaqId      = null;
+    this._activeFaqId = null;
+    this._answerOrigin = null;
 
     const direction = this._resolveDirection('home');
     this._transitionToScreen('home', {
@@ -379,11 +382,11 @@ class SupportWidget extends HTMLElement {
     });
   }
 
-  _showCategoryScreen (categoryId, { direction: explicitDirection } = {}) {
+  _showCategoryScreen(categoryId, { direction: explicitDirection } = {}) {
     this._activeCategoryId = categoryId;
 
-    const categoryData  = this.faqCategories[categoryId] || {};
-    const faqListEl     = this._panelEl.querySelector('#sw-category-faq-list');
+    const categoryData = this.faqCategories[categoryId] || {};
+    const faqListEl = this._panelEl.querySelector('#sw-category-faq-list');
     const categoryTitle = this._panelEl.querySelector('#sw-category-title');
     categoryTitle.textContent = categoryData.name || 'Category';
     faqListEl.innerHTML = '';
@@ -395,14 +398,14 @@ class SupportWidget extends HTMLElement {
     } else {
       categoryFaqs.forEach(faq => {
         const faqButton = document.createElement('button');
-        faqButton.className             = 'sw-faq-item';
-        faqButton.type                  = 'button';
-        faqButton.dataset.action        = 'open-answer';
-        faqButton.dataset.faqId         = faq.id;
-        faqButton.dataset.question      = faq.question;
-        faqButton.dataset.answer        = faq.answer;
+        faqButton.className = 'sw-faq-item';
+        faqButton.type = 'button';
+        faqButton.dataset.action = 'open-answer';
+        faqButton.dataset.faqId = faq.id;
+        faqButton.dataset.question = faq.question;
+        faqButton.dataset.answer = faq.answer;
         faqButton.dataset.categoryLabel = faq.categoryLabel;
-        faqButton.dataset.categoryId    = faq.categoryId;
+        faqButton.dataset.categoryId = faq.categoryId;
         faqButton.setAttribute('role', 'listitem');
         faqButton.innerHTML = `
           <span class="sw-faq-item__icon">${categoryData.icon}</span>
@@ -421,21 +424,18 @@ class SupportWidget extends HTMLElement {
     });
   }
 
-  _showAnswerScreen ({ faqId, question, answer, categoryLabel, categoryId, direction: explicitDirection } = {}) {
-    this._activeFaqId      = faqId;
+  _populateAnswerContent({ faqId, question, answer, categoryLabel, categoryId }) {
+    this._activeFaqId = faqId;
     this._activeCategoryId = categoryId || this._activeCategoryId;
 
-    /* Populate answer */
     this._panelEl.querySelector('#sw-answer-title').textContent = question;
-    this._panelEl.querySelector('#sw-answer-text').innerHTML    = answer;
+    this._panelEl.querySelector('#sw-answer-text').innerHTML = answer;
 
-    /* Category pill — clicking takes user to category screen */
-    const categoryPill      = this._panelEl.querySelector('#sw-answer-category-btn');
+    const categoryPill = this._panelEl.querySelector('#sw-answer-category-btn');
     const categoryPillLabel = this._panelEl.querySelector('#sw-answer-category-btn-label');
-    categoryPillLabel.textContent   = categoryLabel;
+    categoryPillLabel.textContent = categoryLabel;
     categoryPill.dataset.categoryId = this._activeCategoryId;
 
-    /* Prev / Next navigation within same category */
     const navContainer = this._panelEl.querySelector('#sw-answer-nav');
     navContainer.innerHTML = '';
 
@@ -450,8 +450,108 @@ class SupportWidget extends HTMLElement {
     if (currentIndex >= 0 && currentIndex < siblingFaqs.length - 1) {
       navContainer.appendChild(this._buildNavLink(siblingFaqs[currentIndex + 1], 'next'));
     }
+  }
+
+  _swapAnswerContent(faqData, direction) {
+    const bodyEl = this._panelEl.querySelector('#sw-answer-body');
+    const headingEl = this._panelEl.querySelector('.sw-answer-heading');
+
+    /* Defensive fallback if the markup hasn't been updated with the
+       #sw-answer-body wrapper yet — just swap instantly instead of breaking. */
+    if (!bodyEl) {
+      this._populateAnswerContent(faqData);
+      const fallbackTitle = this._panelEl.querySelector('#sw-answer-title');
+      if (fallbackTitle) fallbackTitle.focus({ preventScroll: true });
+      return;
+    }
+
+    this._isTransitioning = true;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const exitClass = direction === 'forward' ? 'sw-answer-body--exit-forward' : 'sw-answer-body--exit-backward';
+    const enterClass = direction === 'forward' ? 'sw-answer-body--enter-forward' : 'sw-answer-body--enter-backward';
+    const headingExitClass = direction === 'forward' ? 'sw-answer-heading--exit-forward' : 'sw-answer-heading--exit-backward';
+    const headingEnterClass = direction === 'forward' ? 'sw-answer-heading--enter-forward' : 'sw-answer-heading--enter-backward';
+
+    const swapContentAndEnter = () => {
+      /* Swap the actual content while the block is faded out/off-position,
+         so the user never sees the old and new answers overlap. */
+      this._populateAnswerContent(faqData);
+
+      /* The clicked Prev/Next button was just destroyed and rebuilt by the
+         line above. Re-anchor focus immediately — otherwise it falls back
+         to <body> for the rest of this animation and Tab can escape the
+         panel, the exact bug we fixed earlier for screen transitions. */
+      const answerTitle = this._panelEl.querySelector('#sw-answer-title');
+      if (answerTitle) answerTitle.focus({ preventScroll: true });
+
+      bodyEl.classList.remove(exitClass);
+      if (headingEl) headingEl.classList.remove(headingExitClass);
+
+      if (prefersReducedMotion) {
+        this._isTransitioning = false;
+        return;
+      }
+
+      bodyEl.classList.add(enterClass);
+      if (headingEl) headingEl.classList.add(headingEnterClass);
+
+      void bodyEl.offsetWidth; /* force reflow before animating to resting state */
+
+      requestAnimationFrame(() => {
+        bodyEl.classList.remove(enterClass);
+        if (headingEl) headingEl.classList.remove(headingEnterClass);
+      });
+
+      let enterSettled = false;
+      let enterFallback = null;
+      const finishEnter = () => {
+        if (enterSettled) return;
+        enterSettled = true;
+        clearTimeout(enterFallback);
+        bodyEl.removeEventListener('transitionend', finishEnter);
+        this._isTransitioning = false;
+      };
+      bodyEl.addEventListener('transitionend', finishEnter);
+      enterFallback = setTimeout(finishEnter, 420);
+    };
+
+    if (prefersReducedMotion) {
+      swapContentAndEnter();
+      return;
+    }
+
+    bodyEl.classList.add(exitClass);
+    if (headingEl) headingEl.classList.add(headingExitClass);
+
+    let exitSettled = false;
+    let exitFallback = null;
+    const finishExit = () => {
+      if (exitSettled) return;
+      exitSettled = true;
+      clearTimeout(exitFallback);
+      bodyEl.removeEventListener('transitionend', finishExit);
+      swapContentAndEnter();
+    };
+    bodyEl.addEventListener('transitionend', finishExit);
+    exitFallback = setTimeout(finishExit, 420);
+  }
+
+  _showAnswerScreen({ faqId, question, answer, categoryLabel, categoryId, direction: explicitDirection } = {}) {
+    if (this._isTransitioning) return; // ignore rapid clicks mid-animation
 
     const direction = this._resolveDirection('answer', explicitDirection);
+
+    /* Already on the answer screen, just moving to a sibling FAQ via
+       Prev/Next — animate the content in place. A full screen-to-screen
+       transition would be a no-op here since source and destination are
+       literally the same screen element. */
+    if (this._currentScreen === 'answer') {
+      this._swapAnswerContent({ faqId, question, answer, categoryLabel, categoryId }, direction);
+      return;
+    }
+
+    this._populateAnswerContent({ faqId, question, answer, categoryLabel, categoryId });
     this._transitionToScreen('answer', {
       direction,
       onComplete: () => {
@@ -461,12 +561,12 @@ class SupportWidget extends HTMLElement {
     });
   }
 
-  _buildNavLink (faq, navDirection) {
+  _buildNavLink(faq, navDirection) {
     const navBtn = document.createElement('button');
-    navBtn.type                 = 'button';
-    navBtn.className            = `sw-answer-nav__link sw-answer-nav__link--${navDirection}`;
-    navBtn.dataset.action       = 'go-to-faq';
-    navBtn.dataset.faqId        = faq.id;
+    navBtn.type = 'button';
+    navBtn.className = `sw-answer-nav__link sw-answer-nav__link--${navDirection}`;
+    navBtn.dataset.action = 'go-to-faq';
+    navBtn.dataset.faqId = faq.id;
     navBtn.dataset.navDirection = navDirection;
     navBtn.innerHTML = `
         ${navDirection === 'prev' ? this.arrowIconPrev : this.arrowIconNext}
@@ -474,7 +574,7 @@ class SupportWidget extends HTMLElement {
     return navBtn;
   }
 
-  _escapeHtml (rawString) {
+  _escapeHtml(rawString) {
     const tempDiv = document.createElement('div');
     tempDiv.textContent = rawString;
     return tempDiv.innerHTML;

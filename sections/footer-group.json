@@ -19,7 +19,7 @@
           "settings": {
             "category_name": "Shipping & Delivery",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
+            "category_icon": "<svg stroke-width=\"0.00064\" stroke=\"#b82928\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 64 64\" height=\"800px\" width=\"800px\" fill=\"#b82928\">\n\n<g stroke-width=\"0\" id=\"SVGRepo_bgCarrier\"></g>\n\n<g stroke-linejoin=\"round\" stroke-linecap=\"round\" id=\"SVGRepo_tracerCarrier\"></g>\n\n<g id=\"SVGRepo_iconCarrier\"> <g id=\"_16_hand_delivery_box\" data-name=\"16 hand delivery box\"> <path d=\"M60.27,42.62l-.43-1.19a3.851,3.851,0,0,0-4.2-2.42c-.05.01-.09.01-.14.02V13.5c0-.01-.01-.02-.01-.04a.8.8,0,0,0-.06-.3.637.637,0,0,0-.02-.07c-.01-.01-.01-.03-.02-.04l-3-6a.988.988,0,0,0-.89-.55h-27a1,1,0,0,0-.83.45l-4,6a.388.388,0,0,0-.06.11c-.01.03-.03.05-.04.08a1.372,1.372,0,0,0-.07.34V32.92c-.15.02-.3.04-.45.07l-4.08.92V30.5a2.006,2.006,0,0,0-2-2H5.5a2.006,2.006,0,0,0-2,2v25a2.006,2.006,0,0,0,2,2h7.47a2.006,2.006,0,0,0,2-2V52.89L31.5,55.88a12.715,12.715,0,0,0,7-.69l19.52-7.73A3.8,3.8,0,0,0,60.27,42.62ZM12.97,55.5H5.5v-25h7.47ZM42.5,8.5h8.38l2,4H42.5Zm-8,0h6v4h-6Zm0,6h6v12l-2.4-1.8a1,1,0,0,0-1.2,0l-2.4,1.8Zm-9.46-6H32.5v4H22.37Zm-3.54,6h11v14a.977.977,0,0,0,.55.89,1,1,0,0,0,1.05-.09l3.4-2.55,3.4,2.55a1.029,1.029,0,0,0,.6.2.908.908,0,0,0,.45-.11.977.977,0,0,0,.55-.89v-14h11V39.28c-.5.07-1.01.15-1.5.24-1.01.16-2.06.34-3.08.44a53.558,53.558,0,0,1-7.03.33,53.365,53.365,0,0,1-5.91-.52,3.661,3.661,0,0,0-.33-2.03,4,4,0,0,0-2.54-2.08l-9.48-2.57a9.536,9.536,0,0,0-2.13-.32ZM57.28,45.6,37.77,53.33a10.729,10.729,0,0,1-5.91.58L14.97,50.86V35.96l4.52-1.02a7.517,7.517,0,0,1,3.62.08l9.47,2.57a1.992,1.992,0,0,1,1.27,1.02,1.725,1.725,0,0,1,.03,1.44,2.036,2.036,0,0,1-2.02,1.17l-8.22-1.7a1,1,0,0,0-.41,1.96l8.28,1.71a.355.355,0,0,0,.1.02c.14.01.27.02.4.02a4.068,4.068,0,0,0,3.2-1.55,56.551,56.551,0,0,0,6.62.61,55.905,55.905,0,0,0,7.3-.34c1.08-.11,2.16-.29,3.2-.46,1.14-.19,2.32-.39,3.48-.49a1.969,1.969,0,0,1,2.15,1.12l.43,1.18A1.814,1.814,0,0,1,57.28,45.6Z\"></path> <path d=\"M49.5,31.5h-6a2.006,2.006,0,0,0-2,2v2a2.006,2.006,0,0,0,2,2h6a2.006,2.006,0,0,0,2-2v-2A2.006,2.006,0,0,0,49.5,31.5Zm0,4h-6v-2h6Z\"></path> </g> </g>\n\n</svg>",
             "hide_icon": false
           }
         },
@@ -28,7 +28,7 @@
           "settings": {
             "category_name": "Exchanges & Returns",
             "category_id": "returns",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
+            "category_icon": "<svg stroke=\"#b82928\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 64 64\" height=\"800px\" width=\"800px\" fill=\"#b82928\">\n\n<g stroke-width=\"0\" id=\"SVGRepo_bgCarrier\"></g>\n\n<g stroke-linejoin=\"round\" stroke-linecap=\"round\" id=\"SVGRepo_tracerCarrier\"></g>\n\n<g id=\"SVGRepo_iconCarrier\"> <g id=\"_03_packing_box\" data-name=\"03 packing box\"> <path d=\"M45.09,22.76H20.96l-4.25-5.93a2,2,0,0,0-1.62-.84H6.79A2.005,2.005,0,0,0,5.1,19.07l2.99,4.65L3.9,29.3a2,2,0,0,0,1.6,3.2H6.88L6.86,54.68a2,2,0,0,0,2,2H45.09a2.008,2.008,0,0,0,2.01-2V24.76A2.008,2.008,0,0,0,45.09,22.76ZM6.79,17.99h8.3l3.41,4.77H9.85ZM5.5,30.5l4.31-5.74H35.38L31.07,30.5ZM36.38,54.68H8.86L8.88,32.5H31.07a2,2,0,0,0,1.6-.8l3.71-4.94Zm8.71,0H38.38V24.76H45.1Z\"></path> <path d=\"M60.39,22.76A16.958,16.958,0,0,0,45.12,7.39,16.774,16.774,0,0,0,31.9,12.03l-1.92-1.06a1,1,0,0,0-.99.01,1.014,1.014,0,0,0-.5.85l-.03,1.52c-.02.93-.05,1.86-.04,2.79,0,.58.01,1.17.02,1.76l.01.88a1.333,1.333,0,0,1,0,.2,4.29,4.29,0,0,0,.04.78,1.018,1.018,0,0,0,.46.65.958.958,0,0,0,.79.11l8.34-2.36a1,1,0,0,0,.38-1.71l-1.44-1.27a10.976,10.976,0,0,1,7.53-2.12A11.1,11.1,0,0,1,54.64,23.34a10.936,10.936,0,0,1-3.99,9.25,2.667,2.667,0,0,0-.96,1.82,2.867,2.867,0,0,0,.64,2.05l.22.25a2.769,2.769,0,0,0,2.13,1,2.714,2.714,0,0,0,1.73-.63A16.882,16.882,0,0,0,60.39,22.76ZM53.12,35.55a.749.749,0,0,1-1.04-.13l-.21-.25a.754.754,0,0,1-.18-.57.663.663,0,0,1,.24-.47,12.9,12.9,0,0,0,4.7-10.92A13.111,13.111,0,0,0,44.72,11.06c-.38-.03-.76-.04-1.14-.04a12.9,12.9,0,0,0-8.78,3.4.963.963,0,0,0-.32.75.975.975,0,0,0,.34.74l.95.84-5.33,1.5v-.39c-.01-.57-.02-1.15-.02-1.73-.01-.87.01-1.74.04-2.61l1.13.63a1,1,0,0,0,1.21-.19A14.85,14.85,0,1,1,53.12,35.55Z\"></path> </g> </g>\n\n</svg>",
             "hide_icon": false
           }
         },
@@ -37,7 +37,7 @@
           "settings": {
             "category_name": "Miscellaneous",
             "category_id": "misc",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
+            "category_icon": "<svg stroke=\"#b82928\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 64 64\" height=\"800px\" width=\"800px\" fill=\"#b82928\">\n\n<g stroke-width=\"0\" id=\"SVGRepo_bgCarrier\"></g>\n\n<g stroke-linejoin=\"round\" stroke-linecap=\"round\" id=\"SVGRepo_tracerCarrier\"></g>\n\n<g id=\"SVGRepo_iconCarrier\"> <g id=\"_30_ecommerce\" data-name=\"30 ecommerce\"> <path d=\"M34.218,54.6H30.052a1,1,0,0,0,0,2h4.166a1,1,0,0,0,0-2Z\"></path> <path d=\"M53.08,15.01a.974.974,0,0,0-.06-.34.59.59,0,0,1-.04-.08c-.02-.04-.03-.07-.05-.11L46.52,4.41a1.946,1.946,0,0,0-1.65-.91H19.13a1.946,1.946,0,0,0-1.65.91L11.07,14.48c-.02.04-.03.07-.05.11a.59.59,0,0,1-.04.08.974.974,0,0,0-.06.34l-.01.01v4.61a4.993,4.993,0,0,0,3.53,4.75V54.72a5.791,5.791,0,0,0,5.79,5.78H43.77a5.791,5.791,0,0,0,5.79-5.78V24.38a4.993,4.993,0,0,0,3.53-4.75V15.02ZM44.83,5.48l5.43,8.54H44.72L41.15,5.48Zm-5.85,0,3.57,8.54H36.91l-.93-8.53Zm4.07,10.54v3.61a3,3,0,0,1-3,3h-.03a3,3,0,0,1-3-3V16.02ZM30.03,5.49h3.94l.93,8.53H29.1ZM28.98,16.02h6.04v3.61a3,3,0,0,1-3,3h-.04a3,3,0,0,1-3-3ZM28.02,5.49l-.93,8.53H21.45L25.02,5.5ZM26.98,16.02v3.61a3,3,0,0,1-3,3h-.03a3,3,0,0,1-3-3V16.02ZM19.13,5.5h3.72l-3.57,8.52H13.73ZM15.95,22.63h-.04a3,3,0,0,1-3-3V16.02h6.04v3.61A3,3,0,0,1,15.95,22.63ZM47.56,54.72a3.792,3.792,0,0,1-3.79,3.78H20.23a3.792,3.792,0,0,1-3.79-3.78V52.71H47.56Zm0-4.01H16.44V24.58a4.959,4.959,0,0,0,3.51-1.98,4.966,4.966,0,0,0,4,2.03h.03a4.966,4.966,0,0,0,4-2.03,4.966,4.966,0,0,0,4,2.03h.04a4.966,4.966,0,0,0,4-2.03,4.966,4.966,0,0,0,4,2.03h.03a4.966,4.966,0,0,0,4-2.03,4.959,4.959,0,0,0,3.51,1.98Zm3.53-31.08a3,3,0,0,1-3,3h-.04a3,3,0,0,1-3-3V16.02h6.04Z\"></path> <path d=\"M42.25,44.06,36.9,38.71a8.417,8.417,0,1,0-3.73,3.73l5.35,5.35a2.638,2.638,0,0,0,3.73-3.73ZM29.39,41.34a6.415,6.415,0,1,1,4.53-1.88A6.376,6.376,0,0,1,29.39,41.34Zm11.45,5.03a.643.643,0,0,1-.9.01L34.86,41.3a4.907,4.907,0,0,0,.48-.43,6.142,6.142,0,0,0,.42-.47l5.08,5.07A.634.634,0,0,1,40.84,46.37Z\"></path> </g> </g>\n\n</svg>",
             "hide_icon": false
           }
         },
@@ -46,7 +46,7 @@
           "settings": {
             "category_name": "International Orders",
             "category_id": "international",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
+            "category_icon": "<svg stroke=\"#b82928\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 64 64\" height=\"800px\" width=\"800px\" fill=\"#b82928\">\n\n<g stroke-width=\"0\" id=\"SVGRepo_bgCarrier\"></g>\n\n<g stroke-linejoin=\"round\" stroke-linecap=\"round\" id=\"SVGRepo_tracerCarrier\"></g>\n\n<g id=\"SVGRepo_iconCarrier\"> <g id=\"_31_delivery_box\" data-name=\"31 delivery box\"> <path d=\"M32,3.5A19.7,19.7,0,0,0,12.32,23.18c0,.03.02.06.02.09a1.18,1.18,0,0,0,.04.2,1.336,1.336,0,0,0,.07.18,1.3,1.3,0,0,0,.1.15,1,1,0,0,0,.15.14.234.234,0,0,0,.07.07L28.7,34.63H17.43a2.006,2.006,0,0,0-2,2V58.5a2.006,2.006,0,0,0,2,2H46.57a2.006,2.006,0,0,0,2-2V36.63a2.006,2.006,0,0,0-2-2H35.3L51.23,24.01a.234.234,0,0,0,.07-.07,1,1,0,0,0,.15-.14,1.3,1.3,0,0,0,.1-.15,1.336,1.336,0,0,0,.07-.18,1.18,1.18,0,0,0,.04-.2c0-.03.02-.06.02-.09A19.7,19.7,0,0,0,32,3.5Zm0,2a17.694,17.694,0,0,1,15.68,9.52,10.243,10.243,0,0,0-6.34-2.18A10.347,10.347,0,0,0,32,18.75a10.347,10.347,0,0,0-9.34-5.91,10.243,10.243,0,0,0-6.34,2.18A17.694,17.694,0,0,1,32,5.5ZM14.35,22.66A8.333,8.333,0,0,1,31,23.18V33.76ZM34.11,36.63v8.55l-1.56-1.04a.975.975,0,0,0-1.1,0l-1.56,1.04V36.63Zm1.47,11.3a1,1,0,0,0,.53-.88V36.63H46.57V58.5H17.43V36.63H27.89V47.05a1,1,0,0,0,.53.88,1.009,1.009,0,0,0,1.02-.05L32,46.17l2.56,1.71a1.016,1.016,0,0,0,.55.17A.939.939,0,0,0,35.58,47.93ZM33,33.76V23.18a8.333,8.333,0,0,1,16.65-.52Z\"></path> <path d=\"M43.42,50.2H37.19a1,1,0,0,0-1,1v4.15a1,1,0,0,0,1,1h6.23a1,1,0,0,0,1-1V51.2A1,1,0,0,0,43.42,50.2Zm-1,4.15H38.19V52.2h4.23Z\"></path> </g> </g>\n\n</svg>",
             "hide_icon": false
           }
         },
@@ -55,7 +55,7 @@
           "settings": {
             "category_name": "Contact Information",
             "category_id": "contact",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
+            "category_icon": "<svg stroke=\"#b82928\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 64 64\" height=\"800px\" width=\"800px\" fill=\"#b82928\">\n\n<g stroke-width=\"0\" id=\"SVGRepo_bgCarrier\"></g>\n\n<g stroke-linejoin=\"round\" stroke-linecap=\"round\" id=\"SVGRepo_tracerCarrier\"></g>\n\n<g id=\"SVGRepo_iconCarrier\"> <g id=\"_19_costumer_service\" data-name=\"19 costumer service\"> <path d=\"M37.71,34.54a13.428,13.428,0,0,0,5.51-4.86H46.7a2.915,2.915,0,0,0,2.74-3.06V19.43a3.124,3.124,0,0,0-.2-1.11V18.3a25.246,25.246,0,0,0-5.2-9.54l-.13-.15a15.275,15.275,0,0,0-5.72-3.97,17.135,17.135,0,0,0-14.11.8,15.539,15.539,0,0,0-3.99,3.17l-.13.15a25.246,25.246,0,0,0-5.2,9.54v.02a3.124,3.124,0,0,0-.2,1.11v7.19a2.915,2.915,0,0,0,2.74,3.06h3.48a13.428,13.428,0,0,0,5.51,4.86,20.226,20.226,0,0,0-15.02,19.5V59.5a1,1,0,0,0,1,1H51.73a1,1,0,0,0,1-1V54.04A20.226,20.226,0,0,0,37.71,34.54Zm9.73-15.11v7.19c0,.56-.35,1.06-.74,1.06H44.29c.17-.42.33-.85.46-1.29,0-.01,0-.01.01-.02a13.235,13.235,0,0,0-.1-8H46.7C47.09,18.37,47.44,18.87,47.44,19.43ZM17.3,27.68c-.39,0-.74-.5-.74-1.06V19.43c0-.56.35-1.06.74-1.06h2.04a13.261,13.261,0,0,0,.37,9.31Zm.26-11.31a22.694,22.694,0,0,1,3.89-6.28l.12-.13A13.124,13.124,0,0,1,25.05,7.2a15.268,15.268,0,0,1,12.41-.7,13.159,13.159,0,0,1,4.97,3.46l.12.13a22.694,22.694,0,0,1,3.89,6.28H43.82a13.311,13.311,0,0,0-23.64,0Zm3.11,6.14A11.33,11.33,0,1,1,43.05,25H39.71a2.991,2.991,0,0,0-2.82-2h-3a3,3,0,0,0,0,6h3a2.991,2.991,0,0,0,2.82-2H42.4a11.329,11.329,0,0,1-21.73-4.49Zm17.22,3.48v.02a.994.994,0,0,1-1,.99h-3a1,1,0,0,1,0-2h3A.994.994,0,0,1,37.89,25.99ZM50.73,58.5H13.27V54.04a18.228,18.228,0,0,1,18.2-18.2h1.06a18.228,18.228,0,0,1,18.2,18.2Z\"></path> </g> </g>\n\n</svg>",
             "hide_icon": false
           }
         },
@@ -63,9 +63,8 @@
           "type": "faq_item",
           "settings": {
             "question": "How long does it take to receive an order?",
-            "answer": "<p>Standard delivery takes <strong>5–7 business days</strong> after dispatch.</p>",
+            "answer": "<p>Our products are handcrafted and made-to-order. Typically, it takes<strong>4-5 days to craft</strong>an item, followed by an additional<strong>3-4 days for delivery.</strong>Please allow<strong>7 to 10 days</strong>in total to receive your order.</p>",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Shipping & Delivery",
             "show_on_home": true
           }
@@ -73,12 +72,11 @@
         "faq_item_XbrEfb": {
           "type": "faq_item",
           "settings": {
-            "question": "What are the shipping rates for orders within India?",
-            "answer": "<p>Free shipping on all orders above ₹499. A flat ₹49 applies below that threshold.</p>",
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order is shipped, you will receive tracking information via<strong>email, SMS, and WhatsApp.</strong>You can use the provided tracking number to monitor the status and estimated delivery date of your order. Link to -&gt;<a href=\"https://banjaaranstudio.ithinklogistics.co.in/\" target=\"_blank\">Order Tracking Page</a></p>",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Shipping & Delivery",
-            "show_on_home": false
+            "show_on_home": true
           }
         },
         "faq_item_8f7bb4": {
@@ -87,9 +85,8 @@
             "question": "Where do you ship from?",
             "answer": "<p>All orders are crafted and dispatched from our production unit in <strong>Faridabad, within the Delhi NCR region</strong>.</p>",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Shipping & Delivery",
-            "show_on_home": true
+            "show_on_home": false
           }
         },
         "faq_item_yybUAY": {
@@ -98,7 +95,6 @@
             "question": "Which courier partners do you use for delivery?",
             "answer": "<p>We partner with <strong>Delhivery, BlueDart, and Ecom Express</strong> depending on your pin code.</p>",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Shipping & Delivery",
             "show_on_home": false
           }
@@ -109,18 +105,16 @@
             "question": "How can I track my order?",
             "answer": "<p>You will receive a tracking link via SMS and email once your order is dispatched. You can also check under <strong>My Orders</strong> in your account.</p>",
             "category_id": "shipping",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Shipping & Delivery",
-            "show_on_home": true
+            "show_on_home": false
           }
         },
         "faq_item_aBxd7N": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "How do I start the exchange process and is there a time limit to request an exchange?",
+            "answer": "<p>To start an exchange at Banjaaran Studio, submit your request through our<a href=\"https://banjaaran.in/apps/return_prime\" target=\"_blank\">Exchange Request Portal</a>within 7 days of delivery. We cover all shipping costs for exchanges, ensuring a hassle-free process for you.</p>",
             "category_id": "returns",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Exchanges & Returns",
             "show_on_home": true
           }
@@ -128,65 +122,29 @@
         "faq_item_EkNriq": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "How do I start a return and what refund do I get?",
+            "answer": "<p><strong>WE DO NOT OFFER BANK REFUNDS.</strong>Contact us within<strong>7 days</strong>of delivery at<a>support@banjaaran.in</a>or +91-9999474819 with product photos. We cover shipping costs. You'll receive a<strong>credit coupon</strong>for the item’s full price, with no expiration.</p>",
             "category_id": "returns",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Exchanges & Returns",
             "show_on_home": true
           }
         },
-        "faq_item_qJ3tFr": {
+        "faq_item_Cy6i7N": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
-            "category_id": "international",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
-            "category_label": "International Orders",
-            "show_on_home": true
-          }
-        },
-        "faq_item_jFEYzn": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
-            "category_id": "international",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
-            "category_label": "International Orders",
-            "show_on_home": true
-          }
-        },
-        "faq_item_TLeACg": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
-            "category_id": "contact",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
-            "category_label": "Contact Information",
-            "show_on_home": true
-          }
-        },
-        "faq_item_RpNzWx": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
-            "category_id": "contact",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
-            "category_label": "Contact Information",
+            "question": "What conditions must the item meet for an exchange or return to be eligible?",
+            "answer": "<p>The item must be in immaculate, resellable condition with no signs of wear, and must retain all original packaging, tags, accessories, and gifts.</p>",
+            "category_id": "returns",
+            "category_label": "Exchanges & Returns",
             "show_on_home": true
           }
         },
         "faq_item_TaCNp3": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 1",
-            "answer": "<p>Add answer here 1</p>",
+            "question": "Where are we based and do you have any physical stores?",
+            "answer": "<p>We are based in<strong>Faridabad, Delhi NCR</strong>, where we manage our in-house manufacturing. Currently,<strong>we exclusively sell our products online</strong>and do not operate any physical retail outlets. We<strong>ship PAN India.</strong>Please enjoy browsing our comprehensive online collection, and if you have any queries or need assistance, feel free to reach out.</p>",
             "category_id": "misc",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Miscellaneous",
             "show_on_home": true
           }
@@ -194,11 +152,80 @@
         "faq_item_KYXVBX": {
           "type": "faq_item",
           "settings": {
-            "question": "Add question here 2",
-            "answer": "<p>Add answer here 2</p>",
+            "question": "Do you offer product customizations?",
+            "answer": "<p>At this time,<strong>we do not offer customizations.</strong>Please explore our existing product range to find items that meet your needs.</p>",
             "category_id": "misc",
-            "category_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8\"></path></svg>",
             "category_label": "Miscellaneous",
+            "show_on_home": true
+          }
+        },
+        "faq_item_ANTUKJ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When is a token amount required for COD orders?",
+            "answer": "<p>A token amount of<strong>INR 500</strong>is required for COD orders if you've previously not accepted a COD order, your address is incomplete, or the delivery is to a distant region. This ensures the dedication of our artisans is respected. You'll receive a payment link via email for secure payment.</p>",
+            "category_id": "misc",
+            "category_label": "Miscellaneous",
+            "show_on_home": true
+          }
+        },
+        "faq_item_qJ3tFr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the shipping costs and delivery timeline for international orders?",
+            "answer": "<p><strong>International shipping costs are paid by the customer</strong>and are not included in the free shipping offer. We aim to ship your order within<strong>10-14 days</strong>, but delivery times may vary based on location, distance, and logistics partners.</p>",
+            "category_id": "international",
+            "category_label": "International Orders",
+            "show_on_home": true
+          }
+        },
+        "faq_item_jFEYzn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I place my international order and what are the payment options?",
+            "answer": "<p>If you are facing any issues placing an international order, please contact support. For all international orders, payment must be prepaid using<strong>PayPal</strong>or<strong>Razorpay</strong>;<strong>Cash on Delivery (COD) is not available</strong>for these transactions.</p>",
+            "category_id": "international",
+            "category_label": "International Orders",
+            "show_on_home": true
+          }
+        },
+        "faq_item_kgRBtL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are there additional fees I should be aware of when ordering internationally?",
+            "answer": "<p>Yes, the recipient may be responsible for handling fees and taxes applicable in your country. For orders to the<strong>UK and EU</strong>, Customs and VAT will be charged as per local laws, which are payable by the customer.</p>",
+            "category_id": "international",
+            "category_label": "International Orders",
+            "show_on_home": true
+          }
+        },
+        "faq_item_TLeACg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can i contact customer support?",
+            "answer": "<p>Our support is available via call, WhatsApp, and email at the provided contact details.</p><p>Call (11am to 6pm):<a href=\"tel:+919999474819\" target=\"_blank\">+91-9999474819</a></p><p>WhatsApp:<a href=\"https://wa.me/919999474819\" target=\"_blank\">+919999474819</a></p><p>Email:<a href=\"mailto:support@banjaaran.in\" target=\"_blank\">support@banjaaran.in</a> / <a href=\"mailto:studio@banjaaran.in\" target=\"_blank\">studio@banjaaran.in</a></p>",
+            "category_id": "contact",
+            "category_label": "Contact Information",
+            "show_on_home": true
+          }
+        },
+        "faq_item_RpNzWx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact you for business-related queries, like collaborations, business proposals, or bulk order inquiries?",
+            "answer": "<p>For business-related inquiries, please send an email to<a href=\"mailto:karanveer@banjaaran.in\" target=\"_blank\">Karanveer@banjaaran.in</a>and<a href=\"mailto:meera@banjaaran.in\" target=\"_blank\">Meera@banjaaran.in</a>. Be sure to clearly mention the<strong>purpose of your inquiry in the subject line</strong>to ensure a timely response. We look forward to exploring potential opportunities with you.</p>",
+            "category_id": "contact",
+            "category_label": "Contact Information",
+            "show_on_home": true
+          }
+        },
+        "faq_item_LQPHGc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I apply for a work opportunity at Banjaaran Studio?",
+            "answer": "<p>Please fill out the application form available at the following link (<a href=\"https://forms.gle/WjH8MhVfQ3TbWDf46\" target=\"_blank\">Careers form link</a>) to apply for work opportunities at Banjaaran Studio. We look forward to considering your application.</p>",
+            "category_id": "contact",
+            "category_label": "Contact Information",
             "show_on_home": true
           }
         }
@@ -216,48 +243,52 @@
         "faq_item_MtGgCN",
         "faq_item_aBxd7N",
         "faq_item_EkNriq",
+        "faq_item_Cy6i7N",
+        "faq_item_TaCNp3",
+        "faq_item_KYXVBX",
+        "faq_item_ANTUKJ",
         "faq_item_qJ3tFr",
         "faq_item_jFEYzn",
+        "faq_item_kgRBtL",
         "faq_item_TLeACg",
         "faq_item_RpNzWx",
-        "faq_item_TaCNp3",
-        "faq_item_KYXVBX"
+        "faq_item_LQPHGc"
       ],
       "name": "Support Widget",
       "settings": {
-        "primary_color": "#c0392b",
-        "support_widget_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n      <path d=\"M3 18v-6a9 9 0 0 1 18 0v6\"></path>\n      <path d=\"M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z\"></path>\n    </svg>",
-        "icon_color": "#ffffff",
+        "primary_color": "#b82928",
+        "support_widget_heading_color": "#202223",
+        "support_widget_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M136,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c24.814,0,45-20.186,45-45V255 C181,230.186,160.814,210,136,210z\"></path><path d=\"M61,255c0-4.327,0.571-8.507,1.278-12.634C44.2,248.209,31,265.001,31,285v62c0,19.999,13.2,36.791,31.278,42.634 C61.571,385.507,61,381.327,61,377V255z\"></path><path d=\"M376,210c-24.814,0-45,20.186-45,45v122c0,24.814,20.186,45,45,45c4.51,0,8.782-0.868,12.892-2.108 C383.308,438.401,366.305,452,346,452h-47.763c-6.213-17.422-22.707-30-42.237-30c-24.814,0-45,20.186-45,45 c0,24.814,20.186,45,45,45c19.53,0,36.024-12.578,42.237-30H346c41.353,0,75-33.647,75-75v-30V255 C421,230.186,400.814,210,376,210z\"></path><path d=\"M449.722,242.366C450.429,246.493,451,250.673,451,255v122c0,4.327-0.571,8.507-1.278,12.634 C467.8,383.791,481,366.999,481,347v-62C481,265.001,467.8,248.209,449.722,242.366z\"></path><path d=\"M256,0C131.928,0,31,100.928,31,225v0.383c8.937-6.766,19.277-11.717,30.687-13.934C68.698,110.251,153.054,30,256,30 s187.302,80.251,194.313,181.448c11.409,2.217,21.749,7.169,30.687,13.934V225C481,100.928,380.072,0,256,0z\"></path></svg>",
+        "support_widget_trigger_icon_color": "#ffffff",
         "widget_position": "left",
-        "widget_bottom_position": 24,
-        "widget_right_or_left_position": 40,
+        "widget_bottom_position": 88,
+        "widget_right_or_left_position": 16,
         "button_size": 60,
         "contact_btn_background_color": "#ffffff",
         "contact_btn_icon_color": "#b82928",
-        "tooltip_background_color": "#FFFFFF",
-        "tooltip_text_color": "#000000",
+        "tooltip_background_color": "#ffffff",
+        "tooltip_text_color": "#202223",
         "phone_tooltip_text": "Continue on Phone",
-        "phone_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path d=\"M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z\" fill=\"#b82928\"></path> </g></svg>",
+        "phone_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z\"></path></svg>",
         "phone_number": "+9198765 43210",
         "whatsapp_tooltip_text": "Continue on WhatsApp",
-        "whatsapp_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M3.50002 12C3.50002 7.30558 7.3056 3.5 12 3.5C16.6944 3.5 20.5 7.30558 20.5 12C20.5 16.6944 16.6944 20.5 12 20.5C10.3278 20.5 8.77127 20.0182 7.45798 19.1861C7.21357 19.0313 6.91408 18.9899 6.63684 19.0726L3.75769 19.9319L4.84173 17.3953C4.96986 17.0955 4.94379 16.7521 4.77187 16.4751C3.9657 15.176 3.50002 13.6439 3.50002 12ZM12 1.5C6.20103 1.5 1.50002 6.20101 1.50002 12C1.50002 13.8381 1.97316 15.5683 2.80465 17.0727L1.08047 21.107C0.928048 21.4637 0.99561 21.8763 1.25382 22.1657C1.51203 22.4552 1.91432 22.5692 2.28599 22.4582L6.78541 21.1155C8.32245 21.9965 10.1037 22.5 12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5ZM14.2925 14.1824L12.9783 15.1081C12.3628 14.7575 11.6823 14.2681 10.9997 13.5855C10.2901 12.8759 9.76402 12.1433 9.37612 11.4713L10.2113 10.7624C10.5697 10.4582 10.6678 9.94533 10.447 9.53028L9.38284 7.53028C9.23954 7.26097 8.98116 7.0718 8.68115 7.01654C8.38113 6.96129 8.07231 7.046 7.84247 7.24659L7.52696 7.52195C6.76823 8.18414 6.3195 9.2723 6.69141 10.3741C7.07698 11.5163 7.89983 13.314 9.58552 14.9997C11.3991 16.8133 13.2413 17.5275 14.3186 17.8049C15.1866 18.0283 16.008 17.7288 16.5868 17.2572L17.1783 16.7752C17.4313 16.5691 17.5678 16.2524 17.544 15.9269C17.5201 15.6014 17.3389 15.308 17.0585 15.1409L15.3802 14.1409C15.0412 13.939 14.6152 13.9552 14.2925 14.1824Z\" fill=\"#b82928\"></path> </g></svg>",
+        "whatsapp_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"m17.507 14.307-.009.075c-2.199-1.096-2.429-1.242-2.713-.816-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.578.878-1.634.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.576-.05-.997-.042-1.368.344-1.614 1.774-1.207 3.604.174 5.55 2.714 3.552 4.16 4.206 6.804 5.114.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345z\"></path><path d=\"m20.52 3.449c-7.689-7.433-20.414-2.042-20.419 8.444 0 2.096.549 4.14 1.595 5.945l-1.696 6.162 6.335-1.652c7.905 4.27 17.661-1.4 17.665-10.449 0-3.176-1.24-6.165-3.495-8.411zm1.482 8.417c-.006 7.633-8.385 12.4-15.012 8.504l-.36-.214-3.75.975 1.005-3.645-.239-.375c-4.124-6.565.614-15.145 8.426-15.145 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99z\"></path></svg>",
         "whatsapp_number": "+919876543210",
         "email_tooltip_text": "Continue on Email",
-        "email_icon": "<svg viewbox=\"0 -3.5 32 32\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"#000000\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <title>mail</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" sketch:type=\"MSPage\"> <g id=\"Icon-Set-Filled\" sketch:type=\"MSLayerGroup\" transform=\"translate(-414.000000, -261.000000)\" fill=\"#b82928\"> <path d=\"M430,275.916 L426.684,273.167 L415.115,285.01 L444.591,285.01 L433.235,273.147 L430,275.916 L430,275.916 Z M434.89,271.89 L445.892,283.329 C445.955,283.107 446,282.877 446,282.634 L446,262.862 L434.89,271.89 L434.89,271.89 Z M414,262.816 L414,282.634 C414,282.877 414.045,283.107 414.108,283.329 L425.147,271.927 L414,262.816 L414,262.816 Z M445,261 L415,261 L430,273.019 L445,261 L445,261 Z\" id=\"mail\" sketch:type=\"MSShapeGroup\"> </path> </g> </g> </g></svg>",
+        "email_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 512 512\"><path d=\"M467,61H45c-6.927,0-13.412,1.703-19.279,4.51L255,294.789l51.389-49.387c0,0,0.004-0.005,0.005-0.007 c0.001-0.002,0.005-0.004,0.005-0.004L486.286,65.514C480.418,62.705,473.929,61,467,61z\"></path><path d=\"M507.496,86.728L338.213,256.002L507.49,425.279c2.807-5.867,4.51-12.352,4.51-19.279V106 C512,99.077,510.301,92.593,507.496,86.728z\"></path><path d=\"M4.51,86.721C1.703,92.588,0,99.073,0,106v300c0,6.923,1.701,13.409,4.506,19.274L173.789,256L4.51,86.721z\"></path><path d=\"M317.002,277.213l-51.396,49.393c-2.93,2.93-6.768,4.395-10.605,4.395s-7.676-1.465-10.605-4.395L195,277.211 L25.714,446.486C31.582,449.295,38.071,451,45,451h422c6.927,0,13.412-1.703,19.279-4.51L317.002,277.213z\"></path></svg>",
         "contact_email": "support@yourstore.com",
         "categories_title": "FAQ Categories",
-        "categories_title_color": "#000000",
         "categories_card_bg_color": "#ffffff",
-        "categories_card_title_color": "#000000",
-        "featured_questions_title": "Featured Questions",
-        "featured_questions_title_color": "#1a1a1a",
+        "categories_card_title_color": "#6d7175",
+        "featured_questions_title": "General Queries",
         "featured_questions_card_bg_color": "#f5f5f5",
-        "featured_questions_category_color": "#999999",
+        "featured_questions_card_question_color": "#202223",
+        "featured_questions_category_color": "#6d7175",
         "answer_screen_subtitle_category_color": "#999999",
         "answer_screen_subtitle_category_hover_color": "#000000",
-        "answer_screen_answer_card_color": "#1a1a1a",
-        "answer_screen_answer_card_bg_color": "#f5f5f5",
-        "answer_screen_faq_nav_link_color": "#1a1a1a",
+        "answer_screen_answer_card_color": "#202223",
+        "answer_screen_answer_card_bg_color": "#FFFFFF",
+        "answer_screen_faq_nav_link_color": "#6D7175",
         "empty_category_text": "No questions available in this category.",
         "trigger_label": "Open support"
       }

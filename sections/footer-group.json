@@ -62,8 +62,8 @@
         "faq_item_Bw8zJy": {
           "type": "faq_item",
           "settings": {
-            "question": "How long does it take to receive an order?",
-            "answer": "<p>Standard delivery takes <strong>5–7 business days</strong> after dispatch.</p>",
+            "question": "What are the shipping rates for orders within India?",
+            "answer": "<p><strong>We offer free shipping across India for all prepaid orders.</strong>For Cash on Delivery (COD) orders, a charge of ₹199 is added.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": true
@@ -72,8 +72,8 @@
         "faq_item_XbrEfb": {
           "type": "faq_item",
           "settings": {
-            "question": "What are the shipping rates for orders within India?",
-            "answer": "<p>Free shipping on all orders above ₹499. A flat ₹49 applies below that threshold.</p>",
+            "question": "How long does it take to receive an order?",
+            "answer": "<p>Our products are handcrafted and made-to-order. Typically, it takes<strong>4-5 days to craft</strong>an item, followed by an additional<strong>3-4 days for delivery.</strong>Please allow<strong>7 to 10 days</strong>in total to receive your order.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": false
@@ -83,7 +83,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Where do you ship from?",
-            "answer": "<p>All orders are crafted and dispatched from our production unit in <strong>Faridabad, within the Delhi NCR region</strong>.</p>",
+            "answer": "<p>All orders are crafted and dispatched from our production unit located in<strong>Faridabad, within the Delhi NCR region.</strong></p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": true
@@ -93,7 +93,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Which courier partners do you use for delivery?",
-            "answer": "<p>We partner with <strong>Delhivery, BlueDart, and Ecom Express</strong> depending on your pin code.</p>",
+            "answer": "<p>We use multiple reputed courier partners like<strong>Bluedart, Delhivery, FedEx, and Aramex,</strong>employing their Air Express services to ensure timely delivery without additional charges.</p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": false
@@ -103,7 +103,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How can I track my order?",
-            "answer": "<p>You will receive a tracking link via SMS and email once your order is dispatched. You can also check under <strong>My Orders</strong> in your account.</p>",
+            "answer": "<p>Once your order is shipped, you will receive tracking information via<strong>email, SMS, and WhatsApp.</strong>You can use the provided tracking number to monitor the status and estimated delivery date of your order. Link to -&gt;<a href=\"https://banjaaranstudio.ithinklogistics.co.in/\" target=\"_blank\">Order Tracking Page</a></p>",
             "category_id": "shipping",
             "category_label": "Shipping & Delivery",
             "show_on_home": true
